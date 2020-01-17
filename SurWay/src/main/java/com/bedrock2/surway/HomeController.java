@@ -1,7 +1,13 @@
 package com.bedrock2.surway;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+
+
+//Survey model class
+import com.bedrock2.surway.models.Survey;
 
 
 /**
@@ -29,12 +35,45 @@ public class HomeController {
 	}
 	
 	@GetMapping("/dashboard")
-	public String loadDash() {
+	public String loadDash(Model m) {
+
+		/**
+		 * here we do some database operations to get all the surveys for one user
+		 * we get an array of survey objects as response that we will set as response 
+		 * use this to display data in dashboard.jsp
+		 */
+
+		//fake data for temporary use
+		Survey[] surveys = new Survey[]{
+			new Survey("Employee feedback survey",
+			"a survey to collect employee feedback",
+			20),
+
+			new Survey("Vishu celebs", "plans for vishu celebs", 15)
+		};
+
+		m.addAttribute("surveys", surveys);
 		return "/pages/dashboard.jsp";
 	}
 	
 	@GetMapping("/survey")
-	public String loadSurvey() {
+	public String loadSurvey(Model m) {
+
+
+		//fake data for temporary use replace with actual data from database
+		String[] options = new String[]{
+			"this is option 1",
+			"this is option 2",
+			"this is option 3",
+			"this is option 4",
+			"this is option 5",
+		};
+		m.addAttribute("type", "attributeValue");
+		m.addAttribute("question", "this is the question that is to be displayed");
+		//--------------------------------------
+
+
+		m.addAttribute("options", options);
 		return "/pages/survey.jsp";
 	}
 	
