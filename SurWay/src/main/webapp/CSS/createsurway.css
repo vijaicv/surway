@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+body{
+	background-color: #039af4;
+}
+
+h1{
+	color: white;
+}
+#description {
+	color: white;
+	font-style: bold;
+	position: absolute;
+	top: 7%;
+}
+
+.mainbox{
+	background-color: white;
+	position: absolute;
+	height: 80%;
+	width: 80%;
+	top: 15%;
+	left: 8%;
+	box-shadow: 4px 4px 2px 2px rgb(37, 34, 34);
+	border-radius: 1.5%;
+}
+
+#typecontainer{
+	position: absolute;
+	top: 10%;
+	left: 5%;
+}
