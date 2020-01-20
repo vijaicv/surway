@@ -4,10 +4,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-
+import java.util.HashMap;
+import java.util.Map;
 
 //Survey model class
 import com.bedrock2.surway.models.Survey;
+import com.bedrock2.surway.models.SurveyStat;
 
 
 /**
@@ -84,7 +86,31 @@ public class HomeController {
 	
 	
 	@GetMapping("/statistics")
-	public String loadStatistics() {
+	public String loadStatistics(Model m) {
+
+		//fake data for temporary use
+		Survey survey = new Survey(
+			"Employee feedback survey",
+			"a survey to collect employee feedback",
+			20);
+
+		//------------fake data
+		Map<Integer,Integer> ageWiseCount= new HashMap<Integer,Integer>();
+		ageWiseCount.put(20, 15);
+		ageWiseCount.put(30, 12);
+		ageWiseCount.put(40, 30);
+		ageWiseCount.put(50, 10);
+		
+		SurveyStat surveyStat= new SurveyStat(
+			123,
+			200,
+			120,
+			60,
+			20,
+			ageWiseCount
+		);
+		m.addAttribute("survey", survey);
+		m.addAttribute("stats", surveyStat);
 		return "/pages/statistics.jsp";
 	}
 	
