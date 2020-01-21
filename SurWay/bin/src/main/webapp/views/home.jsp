@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Surway</title>
-<link rel="stylesheet" href="CSS/welcome.css">
+<link rel="stylesheet" href="css/welcome.css">
 </head>
 <body>
 <div class="bg">
