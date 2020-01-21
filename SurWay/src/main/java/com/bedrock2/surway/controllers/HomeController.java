@@ -64,7 +64,7 @@ public class HomeController {
 		return "/views/dashboard.jsp";
 	}
 	
-	@GetMapping("/survey")
+	@GetMapping("/response")
 	public String loadSurvey(Model m) {
 
 
@@ -82,7 +82,7 @@ public class HomeController {
 
 
 		m.addAttribute("options", options);
-		return "/views/survey.jsp";
+		return "/views/response.jsp";
 	}
 	
 	

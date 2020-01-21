@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Surway</title>
+<title>Advanced report</title>
 </head>
 <body>
-Home Page
+
 </body>
 </html>

@@ -1,0 +1,79 @@
+@charset "UTF-8";
+
+
+
+body{
+    background-color: #03A9F4;
+    font-family: 'Open Sans';
+}
+
+#maincard{
+    background-color: white;
+    margin: 100px;
+    padding: 100px;
+    border-radius: 15px;
+}
+
+#title{
+    font-weight: bold;
+    margin: 0px;
+    font-family: 'Source Sans Pro';
+}
+
+
+#description{
+    margin-top: 5px;
+}
+
+#total{
+    color: blue;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Source Sans Pro';
+    margin-left: 20px;
+}
+
+
+.label{
+    font-weight: bold;
+    font-family: 'Source Sans Pro';
+}
+
+.divider{
+    width: 70vw;
+    height: 2px;
+    margin: 30px auto;
+    background-color: #d6d6d6;
+}
+
+#legend{
+    text-align: center;
+}
+
+.legendColor{
+    width:10px;
+    height: 10px;
+    margin: 5px;
+}
+
+.legendName{
+    flex: 5;
+}
+
+
+.newLegendEntry{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+#pichart{
+    text-align: center;
+    margin: 30px auto;
+}
+
+#graph{
+    text-align: center;
+    margin:20px auto;
+}
