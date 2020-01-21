@@ -1,12 +1,17 @@
-package com.bedrock2.surway;
+package com.bedrock2.surway.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 //Survey model class
 import com.bedrock2.surway.models.Survey;
@@ -80,10 +85,13 @@ public class HomeController {
 		return "/pages/survey.jsp";
 	}
 	
-	@GetMapping("/create")
+	
+	@GetMapping("/createsurvey")
 	public String loadCreatePage() {
 		return "/pages/createsurvey.jsp";
 	}
+	
+	
 	
 	
 	@GetMapping("/statistics")
@@ -114,10 +122,7 @@ public class HomeController {
 		m.addAttribute("stats", surveyStat);
 		return "/pages/statistics.jsp";
 	}
-//	@GetMapping("/add_questions")
-//	public String addQuestion() {
-//		return "/pages/createsurvey.jsp";
-//	}
+
 	
 	
 	
