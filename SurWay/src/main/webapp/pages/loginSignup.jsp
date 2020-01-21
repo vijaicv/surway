@@ -10,11 +10,11 @@
 </head>
 <body>
 <div class="loginmainbox">
-<p>Hello there,<br>Welcome Back</p>
+<p class="porange">Hello there,<br>Welcome Back</p>
 <div class="mailbox">
 <div class="flex-container">
 <form>
-<img src="images/mail.png">
+<img src="images/mailid.png">
 <input type="email" name="email" placeholder="email id">
 </form>
 </div>
@@ -29,16 +29,13 @@
 </div>
 <div class="loginbuttonbox">
 <div class="flex-container">
-<form>
-<img src="images/login.png">
-<button class="button">login</button>
-</form>
+<img src="images/login.png"><font color="white">Login</font>
 </div>
 </div>
 </div>
 <div class="verticalline"></div>
 <div class="signupmainbox">
-<p>Get On Board</p>
+<p class="porange">Get On Board</p>
 <div class="username">
 <div class="flex-container">
 <form>
@@ -50,7 +47,7 @@
 <div class="signupmail">
 <div class="flex-container">
 <form>
-<img src="images/mail.png">
+<img src="images/mailid.png">
 <input type="email" name="email" placeholder="email id">
 </form>
 </div>
@@ -71,7 +68,30 @@
 </form>
 </div>
 </div>
-
+<div class="signupdob">
+<div class="flex-container">
+<form>
+<img src="images/calender.png">
+<font color="black" size="2">DOB</font><input type="date" name="dob" >
+</form>
+</div>
+</div>
+<div class="gender">
+<div class="radio-toolbar">
+<div class="flex-container">
+<form>
+  <font size="2"><input type="radio" name="gender" value="male" checked>Male
+  <input type="radio" name="gender" value="female">Female
+  <input type="radio" name="gender" value="other">Other </font> 
+</form>
+</div>
+</div>
+</div>
+<div class="signupbuttonbox">
+<div class="flex-container">
+<img src="images/signup.png"><font color="white">SignUP</font>
+</div>
+</div>
 </div>
 </body>
 </html>
