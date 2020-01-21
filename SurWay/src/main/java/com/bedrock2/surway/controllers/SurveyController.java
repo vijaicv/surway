@@ -29,4 +29,11 @@ public class SurveyController {
 		return "created";
 	}
 	
+	
+	@PostMapping("/addQuestion")
+	public @ResponseBody String addQuestion() {
+		
+		return "added";
+	}
+	
 }
