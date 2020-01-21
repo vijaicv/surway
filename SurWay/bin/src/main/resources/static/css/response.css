@@ -1,0 +1,111 @@
+@charset "ISO-8859-1";
+#hd {
+		   color:white;
+           font-weight: bold;
+           font-family: 'Source Sans Pro'
+        }
+        #hds
+        {
+            color:white;
+            text-align: left;  
+           
+        }
+        .headcontainer 
+        {
+            width: 80%;
+            text-align: left;
+            margin: 0 auto;
+            padding: 50px;
+        }
+        .maincontainer 
+        { 
+            text-align: left;
+            background-color:white;
+            border-radius: 25px;
+            width: 73%;
+            height: 50%;
+            margin: 0 auto;
+            padding: 50px;
+        }
+    .buttonprev {
+            background-color: rgb(252, 201, 36);
+            border: none;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 4px;
+            margin-left:130px;
+            border-radius: 20px;
+            width: 110px;
+        }
+        .buttonnext {
+            background-color: rgb(252, 201, 36);
+            border: none;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            width: 110px;
+            margin-top: 4px;
+            margin-left: 50px;
+            border-radius: 20px;
+        }
+        .btcontainerprev 
+        { 
+            width: 10%;
+             margin: 0 auto;
+             padding: 10px;
+             position: absolute;
+             left: 140;
+        }
+        .btcontainernext 
+        { 
+            width: 12%;
+            margin: 0 auto;
+            padding: 10px;
+            position: absolute;
+            right: 140px;
+        }
+        .bar1       
+         {
+            width:70vw;
+            height:20x;
+            background-color: greenyellow;
+            border-radius: 10px;
+        }
+        .bar2
+        {
+            width:50vw;
+            height:20px;
+            background-color: green; 
+            border-radius: 10px; 
+        }
+        .questionstatcontainer
+        {
+        
+        	margin-left: 150px;
+        	display: flex;
+        }
+          .questionstat
+        {
+            margin-right:3px;
+            height: 40px;
+            width: 40px;
+            background-color: green;
+            border-radius: 50%;
+            display: inline-block;
+            text-align: center;
+            flex: wrap;
+            
+        }
+        .qsstat
+        {
+         color: white;
+         margin:10px;
+         font-size: 15px;
+        }
