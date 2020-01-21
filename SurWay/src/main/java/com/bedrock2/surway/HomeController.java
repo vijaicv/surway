@@ -3,6 +3,7 @@ package com.bedrock2.surway;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -113,6 +114,11 @@ public class HomeController {
 		m.addAttribute("stats", surveyStat);
 		return "/pages/statistics.jsp";
 	}
+//	@GetMapping("/add_questions")
+//	public String addQuestion() {
+//		return "/pages/createsurvey.jsp";
+//	}
+	
 	
 	
 	
