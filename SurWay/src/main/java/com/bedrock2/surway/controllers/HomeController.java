@@ -30,7 +30,7 @@ public class HomeController {
 	
 	@GetMapping("/")
 	public String loadHome() {
-		return "/pages/home.jsp";
+		return "/views/home.jsp";
 	}
 	
 	
@@ -39,7 +39,7 @@ public class HomeController {
 	
 	@GetMapping("/login")
 	public String loadLogin() {
-		return "/pages/loginSignup.jsp";
+		return "/views/loginSignup.jsp";
 	}
 	
 	@GetMapping("/dashboard")
@@ -61,7 +61,7 @@ public class HomeController {
 		};
 
 		m.addAttribute("surveys", surveys);
-		return "/pages/dashboard.jsp";
+		return "/views/dashboard.jsp";
 	}
 	
 	@GetMapping("/survey")
@@ -82,13 +82,13 @@ public class HomeController {
 
 
 		m.addAttribute("options", options);
-		return "/pages/survey.jsp";
+		return "/views/survey.jsp";
 	}
 	
 	
 	@GetMapping("/createsurvey")
 	public String loadCreatePage() {
-		return "/pages/createsurvey.jsp";
+		return "/views/createsurvey.jsp";
 	}
 	
 	
@@ -120,7 +120,7 @@ public class HomeController {
 		);
 		m.addAttribute("survey", survey);
 		m.addAttribute("stats", surveyStat);
-		return "/pages/statistics.jsp";
+		return "/views/statistics.jsp";
 	}
 
 	
