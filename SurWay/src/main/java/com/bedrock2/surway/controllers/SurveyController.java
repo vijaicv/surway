@@ -20,8 +20,9 @@ public class SurveyController {
 	
 	@PostMapping("/create")
 	public @ResponseBody String createSurvey(HttpServletRequest request) {
-		String title= (String) request.getAttribute("title");
-		String description= (String) request.getAttribute("description");
+		String title= (String) request.getParameter("title");
+		String description= (String) request.getParameter("description");
+		System.out.println(title+description);
 		Survey s = new Survey();
 	    s.setTitle(title);
 	    s.setDescription(description);
