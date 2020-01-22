@@ -12,7 +12,7 @@ public class Survey{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id;
+	private Integer Id;
 	
     String title,description;
     int questionCount;
@@ -51,6 +51,8 @@ public class Survey{
         this.questionCount = questionCount;
     }
 
-    
+    public void setId(int Id) {
+        this.Id = Id;
+    }
     
 }
