@@ -2,10 +2,13 @@
 
 body{
 	background-color: #039af4;
+	font-family: Open Sans;
 }
 
 h1{
 	color: white;
+	font-family: 'Source Sans Pro'
+	
 	
 }
 #description {

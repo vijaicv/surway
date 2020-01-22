@@ -158,5 +158,13 @@ public class SurveyController {
 		
 		return "/views/statistics.jsp";
 	}
+	
+	@GetMapping(value = "/QStatistics")
+	public String returnQStatistics(@RequestParam(value = "QId") int QId, Model m) {
+		Question question = questionRepository.findById(QId).get();
+		m.addAttribute("QuestionInfo",question);
+		
+		return "/views/QStatistics.jsp";
+	}
 
 }
