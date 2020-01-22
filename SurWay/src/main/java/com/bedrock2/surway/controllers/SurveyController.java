@@ -138,5 +138,13 @@ public class SurveyController {
 		return "saved";
 
 	}
+	@GetMapping(value = "/statistics")
+	public String returnStatistics(@RequestParam(value = "survey") int surveyId, Model m) {
+		System.out.println(surveyId );
+		Survey survey = surveyRepository.findById(surveyId).get();
+		m.addAttribute("surveyInfo", survey);
+		
+		return "/views/statistics.jsp";
+	}
 
 }
