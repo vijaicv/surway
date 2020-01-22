@@ -13,27 +13,27 @@
 <link rel="stylesheet" href="css/response.css">
 </head>
 <body bgcolor="#428ABF" style="font-family: Open Sans">
-
+<%
+//-----Recieving objects of Survey class and Question class--------------------
+//-----Setting suvey title and description-------------------------------------
+Survey survey=(Survey)request.getAttribute("surveyInfo");
+Question question=(Question)request.getAttribute("question");
+System.out.println(survey.getTitle()+question.getQuestion());
+%>
 	<div class="headcontainer">
 		<div id="hd">
 			<h1>
-				Employee feedback survey
+				<%=survey.getTitle() %>
 				<h1>
 		</div>
-		<div id="hds">Survey to find out the employee feedback on current work atmostphere.</div>
+		<div id="hds"><%=survey.getDescription()%></div>
 	</div>
 
 	<div class="questionstatcontainer">
 	<%
-	//getting objects of qstn and survey from db
-	Survey survey=(Survey)request.getAttribute("surveyInfo");
-	Question question=(Question)request.getAttribute("question");
-    System.out.println(survey.getTitle()+question.getQuestion());
-	//Question count is retrieved and giving properties to Question number status and progress bar
-	//integer question count is taken from url
-	// float totalqs=10;
-	float totalqs=survey.getQuestionCount();
-	 //float currentqs=4;
+//-----Question number and progress bar setting--------------------------------
+
+	 float totalqs=survey.getQuestionCount();
 	 float currentqs=question.getId();
 	 float barwidth=70;
 	 float oneqsln=barwidth/totalqs;
@@ -47,7 +47,6 @@
 	
 	<% 
 	}
-	
 	%>
 	</div>
 	<br>
@@ -59,10 +58,7 @@
 		</div>
 		<br> <b><%=question.getId()%>.<%=question.getQuestion()%></b> <br>
 		<%
-		//Retrieving and setting options
-			
-			
-			//String[] opt = (String[]) request.getAttribute("options");
+//-----Option string is splitting---------------------------------------------
 			String option=question.getOptions();
 			String[] opt=option.split(",");
 			int i = 0, ln = opt.length;
