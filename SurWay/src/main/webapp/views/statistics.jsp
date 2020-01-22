@@ -17,10 +17,10 @@
 
 <body>
     <div id="maincard">
-        <h1 id="title">${survey.getTitle()}</h1>
-        <p id="description">${survey.getDescription()}</p>
+        <h1 id="title">${surveyInfo.getTitle()}</h1>
+        <p id="description">${surveyInfo.getDescription()}</p>
         <a href="/survey">View Survey</a>
-        <p class="label">1. Total no of responses : <b id="total">${stats.getTotalResponses()}</b></p>
+        <p class="label">1. Total no of responses : <b id="total">${surveyInfo.getTotalResponses()}</b></p>
         <div class="divider"></div>
         <p class="label">2. Gender : </p>
         <div id="pichart">
@@ -41,26 +41,26 @@
         
         <script type="text/javascript" src="JS/statistics.js"></script>
         <script type="text/javascript">
-        	<% 
-        		SurveyStat stats =(SurveyStat) request.getAttribute("stats");
-        		double totalCount = stats.getMaleCount()+stats.getFemaleCount()+stats.getOtherCount();
-        	%>
-        	let data = new Map([
-        		["Male",<% out.print(stats.getMaleCount()/totalCount); %>],
-        		["Female",<% out.print(stats.getFemaleCount()/totalCount); %>],
-        		["Other",<% out.print(stats.getOtherCount()/totalCount); %>]
-        	])
-        	drawPiChart("piChart","legend",data)
+        	// <% 
+        	// 	SurveyStat stats =(SurveyStat) request.getAttribute("stats");
+        	// 	double totalCount = stats.getMaleCount()+stats.getFemaleCount()+stats.getOtherCount();
+        	// %>
+        	// let data = new Map([
+        	// 	["Male",<% out.print(stats.getMaleCount()/totalCount); %>],
+        	// 	["Female",<% out.print(stats.getFemaleCount()/totalCount); %>],
+        	// 	["Other",<% out.print(stats.getOtherCount()/totalCount); %>]
+        	// ])
+        	// drawPiChart("piChart","legend",data)
         	
-        	<%
-        		 String ageArray = "[";
-        		 for(Map.Entry<Integer,Integer> entry : stats.getAgeCount().entrySet()){
-        			 ageArray=ageArray+"["+entry.getKey()+","+entry.getValue()+"],";
-        		 }
-        		 ageArray=ageArray+"]";
-        	%>
-        	let ageData = new Map(<% out.print(ageArray); %>)
-        	drawGraph("ageGraph",ageData);
+        	// <%
+        	// 	 String ageArray = "[";
+        	// 	 for(Map.Entry<Integer,Integer> entry : stats.getAgeCount().entrySet()){
+        	// 		 ageArray=ageArray+"["+entry.getKey()+","+entry.getValue()+"],";
+        	// 	 }
+        	// 	 ageArray=ageArray+"]";
+        	// %>
+        	// let ageData = new Map(<% out.print(ageArray); %>)
+        	// drawGraph("ageGraph",ageData);
         </script>
     </div>
 </body>

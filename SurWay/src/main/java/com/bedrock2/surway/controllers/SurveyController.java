@@ -148,6 +148,8 @@ public class SurveyController {
 		return "saved";
 
 	}
+
+	
 	@GetMapping(value = "/statistics")
 	public String returnStatistics(@RequestParam(value = "survey") int surveyId, Model m) {
 		System.out.println(surveyId );
