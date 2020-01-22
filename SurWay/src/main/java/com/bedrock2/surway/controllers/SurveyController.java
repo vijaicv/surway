@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bedrock2.surway.repository.QuestionRepository;
 import com.bedrock2.surway.repository.SurveyRepository;
+import com.bedrock2.surway.repository.UserRepository;
 import com.bedrock2.surway.models.Question;
 import com.bedrock2.surway.models.Survey;
+import com.bedrock2.surway.models.UserTable;
 
 @Controller
 public class SurveyController {
@@ -28,7 +30,8 @@ public class SurveyController {
 	@Autowired
 	private QuestionRepository questionRepository;
 	
-	
+	@Autowired
+	private UserRepository userRepository;
 	@PostMapping("/create")
 	public @ResponseBody String createSurvey(HttpServletRequest request) {
 		String title= (String) request.getParameter("title");
@@ -90,6 +93,23 @@ public class SurveyController {
 		// m.addAttribute("question", question);
 		// return "/views/response.jsp";
 	}
-
-	
+    @PostMapping(value="/adduser")
+	public @ResponseBody String adduser(@RequestParam(value="name") String name,
+				@RequestParam(value="password") String password,
+				@RequestParam(value="email") String email,
+				@RequestParam(value="dob") String dob,
+				@RequestParam(value="gender" ) String gender) {
+    	UserTable user= new UserTable();
+    	user.setName(name);
+    	user.setPassword(password);
+    	user.setEmail(email);
+    	user.setDob(dob);
+    	user.setGender(gender);
+    	userRepository.save(user);
+    	
+    	
+    	return "user created";
+    	
+    }
+				
 }
