@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.bedrock2.surway.repository.QuestionRepository;
 import com.bedrock2.surway.repository.ResponseRepository;
 import com.bedrock2.surway.repository.SurveyRepository;
+import com.bedrock2.surway.repository.UserRepository;
 import com.bedrock2.surway.models.Question;
 import com.bedrock2.surway.models.Survey;
 import com.bedrock2.surway.models.Response;
+import com.bedrock2.surway.models.UserTable;
 
 @Controller
 public class SurveyController {
@@ -33,7 +35,8 @@ public class SurveyController {
 	@Autowired
 	private ResponseRepository responseRepository;
 	
-	
+	@Autowired
+	private UserRepository userRepository;
 	@PostMapping("/create")
 	public @ResponseBody String createSurvey(HttpServletRequest request) {
 		String title= (String) request.getParameter("title");
