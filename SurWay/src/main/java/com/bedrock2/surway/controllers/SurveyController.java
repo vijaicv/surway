@@ -80,8 +80,8 @@ public class SurveyController {
 		return "created";
 	}
 
-	@GetMapping(value = "/question/{id}")
-	public String loadQuestion(@RequestParam(value = "survey") int surveyId, @PathVariable(value = "id") int questionId,
+	@GetMapping(value = "/question")
+	public String loadQuestion(@RequestParam(value = "survey") int surveyId, @RequestParam(value = "id") int questionId,
 			Model m) {
 
 		System.out.println(surveyId + " " + questionId);
@@ -147,6 +147,14 @@ public class SurveyController {
 
 		return "saved";
 
+	}
+	@GetMapping(value = "/statistics")
+	public String returnStatistics(@RequestParam(value = "survey") int surveyId, Model m) {
+		System.out.println(surveyId );
+		Survey survey = surveyRepository.findById(surveyId).get();
+		m.addAttribute("surveyInfo", survey);
+		
+		return "/views/statistics.jsp";
 	}
 
 }
