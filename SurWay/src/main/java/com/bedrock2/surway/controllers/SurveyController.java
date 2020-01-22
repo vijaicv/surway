@@ -80,8 +80,8 @@ public class SurveyController {
 		return "created";
 	}
 
-	@GetMapping(value = "/question/{id}")
-	public String loadQuestion(@RequestParam(value = "survey") int surveyId, @PathVariable(value = "id") int questionId,
+	@GetMapping(value = "/question")
+	public String loadQuestion(@RequestParam(value = "survey") int surveyId, @RequestParam(value = "id") int questionId,
 			Model m) {
 
 		System.out.println(surveyId + " " + questionId);
