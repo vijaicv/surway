@@ -12,7 +12,7 @@ public class Question {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	int Id;
 	
-	String question;
+	String questionString;
 	
 	int type;
 	
@@ -22,11 +22,11 @@ public class Question {
 	
 	String options;
 
-	String optionCount;
+	String optionCount="0,0,0,0,0";
 
 
+		
 	
-
 
 	public Boolean getMandatory() {
 		return mandatory;
@@ -36,8 +36,8 @@ public class Question {
 		this.mandatory = mandatory;
 	}
 
-	public String getOptions() {
-		return options;
+	public String[] getOptions() {
+		return options.split(",");
 	}
 
 	public void setOptions(String options) {
@@ -52,13 +52,7 @@ public class Question {
 		Id = id;
 	}
 
-	public String getQuestion() {
-		return question;
-	}
-
-	public void setQuestion(String question) {
-		this.question = question;
-	}
+	
 
 	public int getType() {
 		return type;
@@ -96,6 +90,14 @@ public class Question {
 		int currentCount = Integer.parseInt(counts[optionNumber]);
 		counts[optionNumber]=Integer.toString(currentCount+1);
 		optionCount = String.join(",", counts);
+	}
+
+	public String getQuestionString() {
+		return questionString;
+	}
+
+	public void setQuestionString(String questionString) {
+		this.questionString = questionString;
 	}
 
 	
