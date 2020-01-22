@@ -12,9 +12,10 @@ public class Survey{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer Id;
-	
-    String title,description;
+	private int Id;
+
+
+	String title,description;
     int questionCount;
     
     int maleCount,femaleCount,otherCount;
@@ -30,6 +31,14 @@ public class Survey{
         this.title = title;
         this.description = description;
         this.questionCount = questionCount;
+    }
+    
+    public int getId() {
+		return Id;
+	}
+    
+    public void setId(int Id) {
+        this.Id = Id;
     }
 
     public String getTitle() {
@@ -56,9 +65,6 @@ public class Survey{
         this.questionCount = questionCount;
     }
 
-    public void setId(int Id) {
-        this.Id = Id;
-    }
 
     public int getMaleCount() {
         return maleCount;

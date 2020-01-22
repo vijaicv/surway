@@ -12,6 +12,8 @@ public class Question {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	int Id;
 	
+	int questionNumber;
+	
 	String questionString;
 	
 	int type;
@@ -26,7 +28,23 @@ public class Question {
 
 
 		
-	
+	public int getQuestionNumber() {
+		return questionNumber;
+	}
+
+	public void setQuestionNumber(int questionNumber) {
+		this.questionNumber = questionNumber;
+	}
+
+	public int getTotalResponses() {
+		String[] counts = optionCount.split(",");
+		int total=0;
+		for(String optioncount:counts) {
+			int count=Integer.parseInt(optioncount);
+			total+=count;
+		}
+		return total;
+	}
 
 	public Boolean getMandatory() {
 		return mandatory;

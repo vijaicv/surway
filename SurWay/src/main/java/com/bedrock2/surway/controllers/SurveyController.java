@@ -81,14 +81,13 @@ public class SurveyController {
 	}
 
 	@GetMapping(value = "/question")
-	public String loadQuestion(@RequestParam(value = "survey") int surveyId, @RequestParam(value = "id") int questionId,
+	public String loadQuestion(@RequestParam(value = "survey") int surveyId, @RequestParam(value = "q") int questionNumber,
 			Model m) {
 
-		System.out.println(surveyId + " " + questionId);
 		Survey survey = surveyRepository.findById(surveyId).get();
 		m.addAttribute("surveyInfo", survey);
 
-		Question question =questionRepository.findById(questionId).get();
+		Question question =questionRepository.findByQuestionNumber(questionNumber)	;
 		m.addAttribute("question", question);
 		return "/views/response.jsp";
 	}

@@ -21,32 +21,55 @@
 <title>Advanced Report</title>
 </head>
 <body>
-	<h1>${survey.getTitle()}</h1>
-	<% 
-        Question[] questions = (Question[])request.getAttribute("questions"); 
-		
-    %>
+	<div id="maincard">
+		<h1>${survey.getTitle()}</h1>
+		<p>${survey.getDescription()}</p>
+		<br /> <br />
+		<%
+			Question[] questions = (Question[]) request.getAttribute("questions");
+		%>
 
 
-	<%
-    	
-    	for(int j=0;j<questions.length;j++){
-    		Question question = questions[j];
-            String[] options = question.getOptions();
-            int totalresponses=0;
-            System.out.println(question.getQuestionString());
-            %>
+		<%
+			double totalresponses = 0;
+			for (int j = 0; j < questions.length; j++) {
+				Question question = questions[j];
+				String[] options = question.getOptions();
+				System.out.println(question.getQuestionString());
+				totalresponses = question.getTotalResponses();
+		%>
 
-	<p><b><%=j%></b>. <%=question.getQuestionString()%></p>
-
-	<ul>
-		<% for(int i=0;i<options.length;i++){ %>
-		<div style="width:<%=question.getIntOptionCount(i)%>%; background-color:#000000">
-			<li><%=options[i]%>-<%=question.getIntOptionCount(i)%></li>
+		<p>
+			<b><%=j + 1%></b>.
+			<%=question.getQuestionString()%></p>
+		<div style="color: blue;">
+			<b>(<%=totalresponses%>) Responses
+			</b>
 		</div>
-		<%}%>
-	</ul>
-	<%}%>
+		<ul>
+			<%
+				for (int i = 0; i < options.length; i++) {
+			%>
+			<%
+				double percentage = 0;
+						if (totalresponses != 0){
+							percentage = (question.getIntOptionCount(i)/totalresponses)*100;
+						}
+			%>
+			<div
+				style="margin:10px;width:<%=percentage%>%; background-color:#69c8ff;border-radius:10px;padding:5px;">
+				<li><%=options[i]%>-<%=percentage%>%</li>
+			</div>
+			<%
+				}
+			%>
+		</ul>
 
+		<br /> <br />
+		<%
+			}
+		%>
+
+	</div>
 </body>
 </html>
