@@ -37,7 +37,6 @@ public class Response{
         this.questionId = questionId;
     }
 
-    
 
     public int getSurveyId() {
         return surveyId;

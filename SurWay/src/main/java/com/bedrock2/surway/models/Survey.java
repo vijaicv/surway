@@ -59,12 +59,30 @@ public class Survey{
         this.Id = Id;
     }
 
-    public int getTotalResponses() {
-        return totalResponses;
+    public int getMaleCount() {
+        return maleCount;
     }
 
-    public void setTotalResponses(int totalResponses) {
-        this.totalResponses = totalResponses;
-	}
+    public void setMaleCount(int maleCount) {
+        this.maleCount = maleCount;
+    }
+
+    public int getFemaleCount() {
+        return femaleCount;
+    }
+
+    public void setFemaleCount(int femaleCount) {
+        this.femaleCount = femaleCount;
+    }
+
+    public int getOtherCount() {
+        return otherCount;
+    }
+
+    public void setOtherCount(int otherCount) {
+        this.otherCount = otherCount;
+    }
+
+    
     
 }

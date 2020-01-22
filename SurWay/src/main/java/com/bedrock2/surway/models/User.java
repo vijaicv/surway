@@ -5,22 +5,25 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import com.bedrock2.surway.Gender;
 @Entity
-@Table(name="UserTable")
-public class UserTable {
+@Table(name="User")
+public class User {
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	int unique_Id;
+	int Id;
+
 	String name;
 	String password;
 	String email;
 	String dob;
-	String gender;
+	Gender gender;
 	public int getUnique_Id() {
-		return unique_Id;
+		return Id;
 	}
 	public void setUnique_Id(int unique_Id) {
-		this.unique_Id = unique_Id;
+		this.Id = unique_Id;
 	}
 	public String getName() {
 		return name;
@@ -46,12 +49,16 @@ public class UserTable {
 	public void setDob(String dob) {
 		this.dob = dob;
 	}
-	public String getGender() {
+
+	public Gender getGender() {
 		return gender;
 	}
-	public void setGender(String gender) {
+
+	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
+	
+	
 	
 
 }
