@@ -5,7 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import com.bedrock2.surway.Gender;
+
+import com.bedrock2.surway.constants.Department;
+import com.bedrock2.surway.constants.Gender;
 @Entity
 @Table(name="User")
 public class User {
@@ -19,6 +21,10 @@ public class User {
 	String email;
 	String dob;
 	Gender gender;
+	Department department;
+
+	
+	
 	public int getUnique_Id() {
 		return Id;
 	}
@@ -56,6 +62,14 @@ public class User {
 
 	public void setGender(Gender gender) {
 		this.gender = gender;
+	}
+
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
 	}
 	
 	

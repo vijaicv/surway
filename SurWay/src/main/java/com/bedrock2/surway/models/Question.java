@@ -18,10 +18,15 @@ public class Question {
 	
 	int surveyId;
 	
-	
 	Boolean mandatory;
 	
 	String options;
+
+	String optionCount;
+
+
+	
+
 
 	public Boolean getMandatory() {
 		return mandatory;
@@ -70,6 +75,30 @@ public class Question {
 	public void setSurveyId(int surveyId) {
 		this.surveyId = surveyId;
 	}
+
+	public String getOptionCount() {
+		return optionCount;
+	}
+
+	public void setOptionCount(String optionCount) {
+		this.optionCount = optionCount;
+	}
+
+	//method to parse string and get actual option count
+	public int getIntOptionCount(int optionNumber){
+		String[] counts = optionCount.split(",");
+		return Integer.parseInt(counts[optionNumber]);
+	}
+
+
+	public void incrementOptionCount(int optionNumber){
+		String[] counts = optionCount.split(",");
+		int currentCount = Integer.parseInt(counts[optionNumber]);
+		counts[optionNumber]=Integer.toString(currentCount+1);
+		optionCount = String.join(",", counts);
+	}
+
+	
 	
 	
 }

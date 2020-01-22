@@ -19,6 +19,7 @@ public class Survey{
     
     int maleCount,femaleCount,otherCount;
 
+    
 
     
     public Survey() {
