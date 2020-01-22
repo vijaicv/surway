@@ -17,6 +17,10 @@ public class Survey{
     String title,description;
     int questionCount;
     
+    int maleCount,femaleCount,otherCount;
+
+
+    
     public Survey() {
     	
     }
@@ -54,5 +58,13 @@ public class Survey{
     public void setId(int Id) {
         this.Id = Id;
     }
+
+    public int getTotalResponses() {
+        return totalResponses;
+    }
+
+    public void setTotalResponses(int totalResponses) {
+        this.totalResponses = totalResponses;
+	}
     
 }

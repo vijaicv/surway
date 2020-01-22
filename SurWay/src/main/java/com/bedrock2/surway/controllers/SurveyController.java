@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bedrock2.surway.repository.QuestionRepository;
+import com.bedrock2.surway.repository.ResponseRepository;
 import com.bedrock2.surway.repository.SurveyRepository;
 import com.bedrock2.surway.models.Question;
 import com.bedrock2.surway.models.Survey;
+import com.bedrock2.surway.models.Response;
 
 @Controller
 public class SurveyController {
@@ -27,6 +29,9 @@ public class SurveyController {
 	
 	@Autowired
 	private QuestionRepository questionRepository;
+
+	@Autowired
+	private ResponseRepository responseRepository;
 	
 	
 	@PostMapping("/create")
@@ -90,6 +95,36 @@ public class SurveyController {
 		// m.addAttribute("question", question);
 		// return "/views/response.jsp";
 	}
+
+
+
+	@PostMapping(value="/regResponse")
+	public @ResponseBody String registerResponse(
+		@RequestParam("userId") int userId,
+		@RequestParam("optionNo") int optionNo,
+		@RequestParam("questionId") int questionId,
+		@RequestParam("surveyId") int surveyId
+	){
+		Response response = new Response();
+		response.setOptionNo(optionNo);
+		response.setQuestionId(questionId);
+		response.setSurveyId(surveyId);
+		response.setUserId(userId);
+		responseRepository.save(response);
+
+		
+
+		Survey survey = surveyRepository.findById(surveyId).get();
+		int totalresponses=survey.getTotalResponses();
+		survey.setTotalResponses(totalresponses+1);
+		surveyRepository.save(survey);
+
+		return "saved";
+	}	
+
+
+
+
 
 	
 }
