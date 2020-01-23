@@ -94,34 +94,34 @@ public class HomeController {
 	
 	
 	
-	@GetMapping("/statistics")
-	public String loadStatistics(Model m) {
+	// @GetMapping("/statistics")
+	// public String loadStatistics(Model m) {
 
-		//fake data for temporary use
-		Survey survey = new Survey(
-			"Employee feedback survey",
-			"a survey to collect employee feedback",
-			20);
+	// 	//fake data for temporary use
+	// 	Survey survey = new Survey(
+	// 		"Employee feedback survey",
+	// 		"a survey to collect employee feedback",
+	// 		20);
 
-		//------------fake data
-		Map<Integer,Integer> ageWiseCount= new HashMap<Integer,Integer>();
-		ageWiseCount.put(20, 15);
-		ageWiseCount.put(30, 12);
-		ageWiseCount.put(40, 30);
-		ageWiseCount.put(50, 10);
+	// 	//------------fake data
+	// 	Map<Integer,Integer> ageWiseCount= new HashMap<Integer,Integer>();
+	// 	ageWiseCount.put(20, 15);
+	// 	ageWiseCount.put(30, 12);
+	// 	ageWiseCount.put(40, 30);
+	// 	ageWiseCount.put(50, 10);
 		
-		SurveyStat surveyStat= new SurveyStat(
-			123,
-			200,
-			120,
-			60,
-			20,
-			ageWiseCount
-		);
-		m.addAttribute("survey", survey);
-		m.addAttribute("stats", surveyStat);
-		return "/views/statistics.jsp";
-	}
+	// 	SurveyStat surveyStat= new SurveyStat(
+	// 		123,
+	// 		200,
+	// 		120,
+	// 		60,
+	// 		20,
+	// 		ageWiseCount
+	// 	);
+	// 	m.addAttribute("survey", survey);
+	// 	m.addAttribute("stats", surveyStat);
+	// 	return "/views/statistics.jsp";
+	// }
 
 	
 	

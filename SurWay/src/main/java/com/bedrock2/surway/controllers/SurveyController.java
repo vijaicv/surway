@@ -19,7 +19,10 @@ import com.bedrock2.surway.repository.SurveyRepository;
 import com.bedrock2.surway.repository.UserRepository;
 import com.bedrock2.surway.models.Question;
 import com.bedrock2.surway.models.Survey;
-import com.bedrock2.surway.models.UserTable;
+import com.bedrock2.surway.models.User;
+import com.bedrock2.surway.models.Response;
+import com.bedrock2.surway.models.User;
+import com.bedrock2.surway.constants.Gender;
 
 @Controller
 public class SurveyController {
@@ -45,52 +48,143 @@ public class SurveyController {
 	
 	
 	@PostMapping("/addQuestion")
-	public @ResponseBody String addQuestion(
-				@RequestParam(value="mandatory") boolean mandatory,
-				@RequestParam(value="question") String question,
-				@RequestParam(value="type") int type,
-				@RequestParam(value = "surveyId") int surveyId,	
-				@RequestParam(value = "options") String options
-			) {
-		
+	public  String addQuestion(@RequestParam(value = "mandatory") boolean mandatory,
+			@RequestParam(value = "question") String question, @RequestParam(value = "type") int type,
+			@RequestParam(value = "surveyId") int surveyId, @RequestParam(value = "optionOne") String option1,
+			@RequestParam(value = "optionTwo") String option2,
+			@RequestParam(value= "optionThree") String option3,
+			@RequestParam(value = "optionFour") String option4,
+			@RequestParam(value = "optionFive") String option5,
+			@RequestParam(value= "dropdownOptions") String dropdownOption){
 
-		//save question
+		// save question
+		System.out.println("mandatory: "+mandatory+
+				" Question:"+question+
+				" Type: "+type+
+				" SurveyId: "+surveyId+
+				" optionOne: "+option1+
+				" optionTwo: "+option2+
+				" optionThree: "+option3+
+				" option4: "+option4+
+				" option5: "+option5);
+		String finalOption = null;
+		if(type == 4)	
+			finalOption = dropdownOption;
+		else if(type == 1 || type == 2) {
+			finalOption = option1+","+option2+","+option3+","+option4+","+option5;
+		}
+		System.out.println("Final Option : "+finalOption);
+		
+		
+		
 		Question q = new Question();
-		q.setQuestion(question);
+		q.setQuestionString(question);
 		q.setType(type);
 		q.setSurveyId(surveyId);
 		q.setMandatory(mandatory);
-		q.setOptions(options);
+		q.setOptions(finalOption);
 		questionRepository.save(q);
-		
-		//get current question count for survey
-		Survey survey = surveyRepository.findById(surveyId).get();
-		System.out.println(survey.getTitle());
-		int current =survey.getQuestionCount();
-		System.out.println(current+1);
-
-		//increment question count
-		survey.setQuestionCount(current+1);
-		surveyRepository.save(survey);
-		return "created";
+//
+//		// get current question count for survey
+//		Survey survey = surveyRepository.findById(surveyId).get();
+//		System.out.println(survey.getTitle());
+//		int current = survey.getQuestionCount();
+//		System.out.println(current + 1);
+//
+//		// increment question count
+//		survey.setQuestionCount(current + 1);
+//		surveyRepository.save(survey);
+		return "/views/createsurvey.jsp";
 	}
 
+	@GetMapping(value = "/question")
+	public String loadQuestion(@RequestParam(value = "survey") int surveyId, @RequestParam(value = "q") int questionNumber,
+			Model m) {
+
+		Survey survey = surveyRepository.findById(surveyId).get();
+		m.addAttribute("surveyInfo", survey);
+
+		Question question =questionRepository.findByQuestionNumber(questionNumber)	;
+		m.addAttribute("question", question);
+		return "/views/response.jsp";
+	}
+
+	@PostMapping(value = "/regResponse")
+	public @ResponseBody String registerResponse(@RequestParam("userId") int userId,
+			@RequestParam("optionNo") int optionNo, @RequestParam("questionId") int questionId,
+			@RequestParam("surveyId") int surveyId) {
+
+		User user = userRepository.findById(userId).get();
+
+		if (user != null) {
+
+			//create new response object
+			//and save it in database
+			Response response = new Response();
+			response.setOptionNo(optionNo);
+			response.setQuestionId(questionId);
+			response.setSurveyId(surveyId);
+			response.setUserId(userId);
+			responseRepository.save(response);
+
+			//get survey data from database
+			Survey survey = surveyRepository.findById(surveyId).get();
+			if(survey==null) return "Error: invalid survey id";
+
+			//updating gender count
+			//get gender of user
+			Gender gender = user.getGender();
+			//update corresponding response count
+			switch (gender) {
+				case MALE:
+					survey.setMaleCount(survey.getMaleCount() + 1);
+					break;
+				case FEMALE:
+					survey.setFemaleCount(survey.getFemaleCount() + 1);
+					break;
+				case OTHER:
+					survey.setOtherCount(survey.getOtherCount() + 1);
+					break;
+				default:
+					return "failed";
+				}
 
 
-	@GetMapping(value="/question/{id}")
-	public String loadQuestion(
-		@RequestParam(value="survey") int surveyId,
-		@PathVariable(value="id") int questionId,
-		Model m
-	) {
+			//updating question count in question table
+			Question question = questionRepository.findById(questionId).get();
+			question.incrementOptionCount(optionNo);
+			questionRepository.save(question);
+			
+		
+			//if all goes well save update survey data
+			surveyRepository.save(survey);
+			
+		}
 
-		System.out.println(surveyId+" "+questionId);
-		return "/views/home.jsp";
-		// Survey survey = surveyRepository.findById(surveyId).get();
-		// m.addAttribute("surveyInfo", survey);
+		return "saved";
 
 		// Question question =questionRepository.findById(questionId).get();
 		// m.addAttribute("question", question);
 		// return "/views/response.jsp";
 	}
-    }
+
+
+	@GetMapping(value = "/statistics")
+	public String returnStatistics(@RequestParam(value = "survey") int surveyId, Model m) {
+		System.out.println(surveyId );
+		Survey survey = surveyRepository.findById(surveyId).get();
+		m.addAttribute("surveyInfo", survey);
+		
+		return "/views/statistics.jsp";
+	}
+	
+	@GetMapping(value = "/QStatistics")
+	public String returnQStatistics(@RequestParam(value = "s") int surveyId, Model m) {
+		Question[] questions = questionRepository.findBysurveyId(surveyId);
+		Survey survey = surveyRepository.findById(surveyId).get();
+		m.addAttribute("survey", survey);
+		m.addAttribute("questions",questions);
+		return "/views/q_statistics.jsp";
+	}
+
+}
