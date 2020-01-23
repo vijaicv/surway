@@ -15,7 +15,7 @@
 //-----Setting suvey title and description-------------------------------------
 Survey survey=(Survey)request.getAttribute("surveyInfo");
 Question question=(Question)request.getAttribute("question");
-System.out.println(survey.getTitle()+question.getQuestion());
+System.out.println(survey.getTitle()+question.getQuestionString());
 %>
 
 	<div class="headcontainer">
@@ -32,7 +32,7 @@ System.out.println(survey.getTitle()+question.getQuestion());
 //-----Question number and progress bar setting--------------------------------
 
 	 float totalqs=survey.getQuestionCount();
-	 float currentqs=question.getId();
+	 float currentqs=question.getQuestionNumber();
 	 float barwidth=70;
 	 float oneqsln=barwidth/totalqs;
 	 float setbarwidth=currentqs*oneqsln;
@@ -41,7 +41,7 @@ System.out.println(survey.getTitle()+question.getQuestion());
 
 %>
 		<div class="questionstat">
-			<div class="qsstat" style="color: white"><%=i %></div>
+			<div class="qsstat" style="color: white"><a href="/question?survey=<%=survey.getId()%>&q=<%=i%>"><%=i %></a></div>
 		</div>
 	
 <% 
@@ -55,14 +55,12 @@ System.out.println(survey.getTitle()+question.getQuestion());
 		<div class="bar1">
 			<div style="width: <%=setbarwidth%>vw;height: 20px;border-radius: 10px;background-color: green;"></div>
 		</div>
-		<br> <b><%=question.getId()%>.<%=question.getQuestion()%></b> <br>
-<%
+		<br> <b><%=question.getQuestionNumber()%> .<%=question.getQuestionString()%></b> <br>
+		<%
 //-----Option string is splitting---------------------------------------------
-		String option=question.getOptions();
-		String[] opt=option.split(",");
-		int i = 0, ln = opt.length;
-		for (i = 0; i < ln; i++) 
-		{
+			String[] opt=question.getOptions();
+			int i = 0, ln = opt.length;
+			for (i = 0; i < ln; i++) {
 				
 %>
 		<br> <input type="radio" name="vehicle1" value="Bike" class="onlyone"><%=opt[i]%><br>
@@ -78,7 +76,7 @@ System.out.println(survey.getTitle()+question.getQuestion());
 		<button class="buttonprev">Previous</button>
 	</div>
 	<div class="btcontainernext">
-		<button class="buttonnext">Next</button>
+		<button class="buttonnext"><a href="/question?survey=<%=survey.getId()%>&q=<%=question.getQuestionNumber()+1%>">Next</a></button>
 	</div>
 	<br>
 	<br>

@@ -61,7 +61,7 @@ public class SurveyController {
 
 		// save question
 		Question q = new Question();
-		q.setQuestion(question);
+		q.setQuestionString(question);
 		q.setType(type);
 		q.setSurveyId(surveyId);
 		q.setMandatory(mandatory);
@@ -81,14 +81,13 @@ public class SurveyController {
 	}
 
 	@GetMapping(value = "/question")
-	public String loadQuestion(@RequestParam(value = "survey") int surveyId, @RequestParam(value = "id") int questionId,
+	public String loadQuestion(@RequestParam(value = "survey") int surveyId, @RequestParam(value = "q") int questionNumber,
 			Model m) {
 
-		System.out.println(surveyId + " " + questionId);
 		Survey survey = surveyRepository.findById(surveyId).get();
 		m.addAttribute("surveyInfo", survey);
 
-		Question question =questionRepository.findById(questionId).get();
+		Question question =questionRepository.findByQuestionNumber(questionNumber)	;
 		m.addAttribute("question", question);
 		return "/views/response.jsp";
 	}
@@ -149,7 +148,7 @@ public class SurveyController {
 
 	}
 
-	
+
 	@GetMapping(value = "/statistics")
 	public String returnStatistics(@RequestParam(value = "survey") int surveyId, Model m) {
 		System.out.println(surveyId );
@@ -160,11 +159,12 @@ public class SurveyController {
 	}
 	
 	@GetMapping(value = "/QStatistics")
-	public String returnQStatistics(@RequestParam(value = "QId") int QId, Model m) {
-		Question question = questionRepository.findById(QId).get();
-		m.addAttribute("QuestionInfo",question);
-		
-		return "/views/QStatistics.jsp";
+	public String returnQStatistics(@RequestParam(value = "s") int surveyId, Model m) {
+		Question[] questions = questionRepository.findBysurveyId(surveyId);
+		Survey survey = surveyRepository.findById(surveyId).get();
+		m.addAttribute("survey", survey);
+		m.addAttribute("questions",questions);
+		return "/views/q_statistics.jsp";
 	}
 
 }
