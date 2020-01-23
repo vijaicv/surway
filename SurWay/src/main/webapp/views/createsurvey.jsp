@@ -45,7 +45,7 @@
 	
 	function selectingOptionType(selectedValue){
 		console.log("This is from script"+selectedValue)
-		if(selectedValue == "multipleanswers"){
+		if(selectedValue == "2"){
 			document.getElementById('MCQSection').style.display = "none";	
 			document.getElementById('multipleAnswers').style.display = "block";	
 			document.getElementById('descriptive').style.display = "none";	
@@ -53,18 +53,18 @@
 
 
 		}
-		else if(selectedValue == "dropdown"){
+		else if(selectedValue == "4"){
 			document.getElementById('MCQSection').style.display = "none";	
 			document.getElementById('multipleAnswers').style.display = "none";	
 			document.getElementById('descriptive').style.display = "none";	
 			document.getElementById('dropdownAnswer').style.display = "block";
 		}
-		else if(selectedValue == "descriptive"){
+		else if(selectedValue == "3"){
 			document.getElementById('MCQSection').style.display = "none";	
 			document.getElementById('multipleAnswers').style.display = "none";	
 			document.getElementById('descriptive').style.display = "block";	
 			document.getElementById('dropdownAnswer').style.display = "none";		}
-		else if(selectedValue == "mcq") {
+		else if(selectedValue == "1") {
 			document.getElementById('MCQSection').style.display = "block";	
 			document.getElementById('multipleAnswers').style.display = "none";	
 			document.getElementById('descriptive').style.display = "none";	
@@ -80,18 +80,19 @@
 <body>
     <h1>Employee Feedback Survey</h1>
     <p id= "description">Survey to find out the employee Feedback on current work atmosphere</p>
-    <form action="add_questions">
+    <form action="addQuestion" method= "post">
     	 <div class="mainbox">
         	<div id = "typecontainer">
            		 <b><label>Type :-</label></b>
-            	<select id="questiontype_container" onchange="selectingOptionType(this.value)">
-                	<option value = "mcq">MCQ</option>
-                	<option value = "multipleanswers">Multiple Answer</option>
-                	<option value = "descriptive">Descriptive</option>
-                	<option value = "dropdown">Dropdown</option>
+            	<select id="questiontype_container" onchange="selectingOptionType(this.value)" name="type">
+                	<option value = "1" >MCQ</option>
+                	<option value = "2" >Multiple Answer</option>
+                	<option value = "3" >Descriptive</option>
+                	<option value = "4" >Dropdown</option>
             	</select><br><br>
-            	<input type = "radio" name="isMandatory" value="true"><b>Mandatory</b><br><br><br><br>
-            	<textarea rows = "7" cols = "125" placeholder="Type your Question here."></textarea><br><br>
+            	<input type="hidden" name="surveyId" value="10">
+            	<input type = "radio" name="mandatory" value="true"><b>Mandatory</b><br><br><br><br>
+            	<textarea rows = "7" cols = "125" placeholder="Type your Question here." name="question"></textarea><br><br>
             	<div id= "MCQSection" style= "display: block">
            			<input type ="radio">&nbsp&nbsp<input type= "text" name="optionOne">
             		<input type ="radio">&nbsp&nbsp<input type= "text" name="optionTwo"><br><br>
