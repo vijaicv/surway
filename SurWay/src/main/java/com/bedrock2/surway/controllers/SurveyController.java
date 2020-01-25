@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bedrock2.surway.repository.QuestionRepository;
-import com.bedrock2.surway.repository.ResponseRepository;
 import com.bedrock2.surway.repository.SurveyRepository;
 import com.bedrock2.surway.repository.UserRepository;
 import com.bedrock2.surway.models.Question;
@@ -27,33 +26,27 @@ import com.bedrock2.surway.constants.Gender;
 
 @Controller
 public class SurveyController {
-
+	
 	@Autowired
 	private SurveyRepository surveyRepository;
-
+	
 	@Autowired
 	private QuestionRepository questionRepository;
-
-	@Autowired
-	private ResponseRepository responseRepository;
-
-	@Autowired
-	private UserRepository UserRepository;
-
+	
 	@Autowired
 	private UserRepository userRepository;
-
 	@PostMapping("/create")
 	public @ResponseBody String createSurvey(HttpServletRequest request) {
-		String title = (String) request.getParameter("title");
-		String description = (String) request.getParameter("description");
+		String title= (String) request.getParameter("title");
+		String description= (String) request.getParameter("description");
 		Survey s = new Survey();
-		s.setTitle(title);
-		s.setDescription(description);
-		surveyRepository.save(s);
+	    s.setTitle(title);
+	    s.setDescription(description);
+	    surveyRepository.save(s);
 		return "created";
 	}
-
+	
+	
 	@PostMapping("/addQuestion")
 	public  String addQuestion(@RequestParam(value = "mandatory") boolean mandatory,
 			@RequestParam(value = "question") String question, @RequestParam(value = "type") int type,
@@ -170,6 +163,9 @@ public class SurveyController {
 
 		return "saved";
 
+		// Question question =questionRepository.findById(questionId).get();
+		// m.addAttribute("question", question);
+		// return "/views/response.jsp";
 	}
 
 
