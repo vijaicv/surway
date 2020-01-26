@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bedrock2.surway.repository.QuestionRepository;
+import com.bedrock2.surway.repository.ResponseRepository;
 import com.bedrock2.surway.repository.SurveyRepository;
 import com.bedrock2.surway.repository.UserRepository;
 import com.bedrock2.surway.models.Question;
@@ -32,6 +33,9 @@ public class SurveyController {
 	
 	@Autowired
 	private QuestionRepository questionRepository;
+	
+	@Autowired
+	private ResponseRepository responseRepository;
 	
 	@Autowired
 	private UserRepository userRepository;

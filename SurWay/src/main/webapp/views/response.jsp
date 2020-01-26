@@ -9,15 +9,17 @@
 <link rel="stylesheet" href="css/response.css">
 </head>
 <body bgcolor="#428ABF" style="font-family: Open Sans">
-
+<script type="text/javascript" src="js/response.js"></script>
 <%
 //-----Recieving objects of Survey class and Question class--------------------
 //-----Setting suvey title and description-------------------------------------
 Survey survey=(Survey)request.getAttribute("surveyInfo");
 Question question=(Question)request.getAttribute("question");
 System.out.println(survey.getTitle()+question.getQuestionString());
+int sid=survey.getId();
+int qnum=question.getQuestionNumber();
 %>
-
+<form onsubmit="return ResponseValidation()" action="/question?survey=${sid}&q=${qnum}" method="GET">
 	<div class="headcontainer">
 		<div id="hd">
 			<h1>
@@ -63,7 +65,7 @@ System.out.println(survey.getTitle()+question.getQuestionString());
 			for (i = 0; i < ln; i++) {
 				
 %>
-		<br> <input type="radio" name="vehicle1" value="Bike" class="onlyone"><%=opt[i]%><br>
+		<br> <input type="radio" name="radio" value="radio" class="onlyone"><%=opt[i]%><br>
 <%
 		}
 %>
@@ -72,12 +74,33 @@ System.out.println(survey.getTitle()+question.getQuestionString());
 	</div>
 
 	<br>
+	<%
+	if(question.getQuestionNumber()>1)
+	{
+	%>
 	<div class="btcontainerprev">
-		<button class="buttonprev">Previous</button>
+		<button class="buttonprev"><a href="/question?survey=<%=survey.getId()%>&q=<%=question.getQuestionNumber()-1%>">Previous</a></button>
 	</div>
+	<%
+	}
+	if(question.getQuestionNumber()<totalqs)
+	{
+	%>
 	<div class="btcontainernext">
-		<button class="buttonnext"><a href="/question?survey=<%=survey.getId()%>&q=<%=question.getQuestionNumber()+1%>">Next</a></button>
+		<button class="buttonnext" type="submit">Next</button>
 	</div>
+	<%
+	}
+	if(question.getQuestionNumber()==totalqs)
+	{
+	%>
+	<div class="btcontainernext">
+		<button class="buttonnext"><a href="/question?survey=<%=survey.getId()%>&q=<%=question.getQuestionNumber()%>">Submit</a></button>
+	</div>
+	<% 
+	}
+	%>
+	</form>
 	<br>
 	<br>
 </body>
