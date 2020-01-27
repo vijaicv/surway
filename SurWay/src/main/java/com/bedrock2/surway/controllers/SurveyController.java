@@ -4,9 +4,14 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.bedrock2.surway.models.Question;
 import com.bedrock2.surway.models.Survey;
 import com.bedrock2.surway.repository.QuestionRepository;
 import com.bedrock2.surway.repository.ResponseRepository;
@@ -14,6 +19,7 @@ import com.bedrock2.surway.repository.SurveyRepository;
 import com.bedrock2.surway.repository.UserRepository;
 	
 @Controller
+@RequestMapping("/survey")
 public class SurveyController {
 	
 	@Autowired
@@ -40,6 +46,19 @@ public class SurveyController {
 	    s.setAuthorId(authorId);
 	    surveyRepository.save(s);
 		return "created";
+	}
+	
+	
+	@GetMapping("/view/{id}")
+	public String getSurvey(@PathVariable("id")int surveyId, Model m) {
+		
+		Survey survey = surveyRepository.findById(surveyId).get();
+		m.addAttribute("surveyInfo",survey);
+		
+		Question[] questions = questionRepository.findBysurveyId(surveyId);
+		m.addAttribute("questions",questions);
+		
+		return "/views/viewsurvey.jsp";
 	}
 
 }
