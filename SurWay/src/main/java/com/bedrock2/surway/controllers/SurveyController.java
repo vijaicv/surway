@@ -36,7 +36,7 @@ public class SurveyController {
 	
 	
 	@PostMapping("/create")
-	public @ResponseBody String createSurvey(HttpServletRequest request) {
+	public String createSurvey(HttpServletRequest request, Model m) {
 		String title= (String) request.getParameter("title");
 		String description= (String) request.getParameter("description");
 		int authorId = (int) Integer.parseInt(request.getParameter("authorId"));
@@ -45,7 +45,9 @@ public class SurveyController {
 	    s.setDescription(description);
 	    s.setAuthorId(authorId);
 	    surveyRepository.save(s);
-		return "created";
+	    m.addAttribute("survey",s);
+	    m.addAttribute("qNum",1);
+		return "/views/createsurvey.jsp";
 	}
 	
 	
