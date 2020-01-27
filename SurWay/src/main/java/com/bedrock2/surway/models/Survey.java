@@ -14,6 +14,7 @@ public class Survey{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int Id;
 
+	int authorId;
 
 	String title,description;
     int questionCount;
@@ -23,7 +24,15 @@ public class Survey{
     
 
     
-    public Survey() {
+    public int getAuthorId() {
+		return authorId;
+	}
+
+	public void setAuthorId(int authorId) {
+		this.authorId = authorId;
+	}
+
+	public Survey() {
     	
     }
 

@@ -12,7 +12,7 @@ import com.bedrock2.surway.repository.QuestionRepository;
 import com.bedrock2.surway.repository.ResponseRepository;
 import com.bedrock2.surway.repository.SurveyRepository;
 import com.bedrock2.surway.repository.UserRepository;
-
+	
 @Controller
 public class SurveyController {
 	
@@ -33,9 +33,11 @@ public class SurveyController {
 	public @ResponseBody String createSurvey(HttpServletRequest request) {
 		String title= (String) request.getParameter("title");
 		String description= (String) request.getParameter("description");
+		int authorId = (int) Integer.parseInt(request.getParameter("authorId"));
 		Survey s = new Survey();
 	    s.setTitle(title);
 	    s.setDescription(description);
+	    s.setAuthorId(authorId);
 	    surveyRepository.save(s);
 		return "created";
 	}
