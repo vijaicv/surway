@@ -15,10 +15,10 @@ public class Response{
     @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
 
-
+    
     int userId;
     int questionId;
-    int optionNo;
+    String optionNo;
     int surveyId;
 
     public int getUserId() {
@@ -46,11 +46,11 @@ public class Response{
         this.surveyId = surveyId;
     }
 
-    public int getOptionNo() {
+    public String getOptionNo() {
         return optionNo;
     }
 
-    public void setOptionNo(int optionNo) {
+    public void setOptionNo(String optionNo) {
         this.optionNo = optionNo;
     }
 
