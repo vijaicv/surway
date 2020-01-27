@@ -31,7 +31,7 @@ int qnum=question.getQuestionNumber();
 	</div>
 
 	<div class="questionstatcontainer">
-<%
+	<%
 //-----Question number and progress bar setting--------------------------------
 
 	 float totalqs=survey.getQuestionCount();
@@ -41,15 +41,14 @@ int qnum=question.getQuestionNumber();
 	 float setbarwidth=currentqs*oneqsln;
 	 for(int i=1;i<=totalqs;i++)	
 	{
-
-%>
+	%>
 		<div class="questionstat">
 			<div class="qsstat" style="color: white"><a href="/question?survey=<%=survey.getId()%>&q=<%=i%>"><%=i %></a></div>
 		</div>
 	
-<% 
+	<% 
 	}
-%>
+	%>
 	</div>
 	<br>
 	<div class="maincontainer">
@@ -65,15 +64,12 @@ int qnum=question.getQuestionNumber();
 			int i = 0, ln = opt.length;
 			for (i = 0; i < ln; i++) {
 				
-%>
+	%>
 		<br> <input type="radio" name="optionNo" class="onlyone" value="<%=i%>"><%=opt[i]%><br>
-<%
+	<%
 		}
-%>
-
-
+	%>
 	</div>
-
 	<br>
 	<%
 	if(question.getQuestionNumber()>1)
@@ -96,7 +92,7 @@ int qnum=question.getQuestionNumber();
 	{
 	%>
 	<div class="btcontainernext">
-		<button class="buttonnext"><a href="/question?survey=<%=survey.getId()%>&q=<%=question.getQuestionNumber()%>">Submit</a></button>
+		<button class="buttonnext"><a href="/survey_completed">Submit</a></button>
 	</div>
 	<% 
 	}
