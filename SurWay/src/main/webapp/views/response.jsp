@@ -19,7 +19,8 @@ System.out.println(survey.getTitle()+question.getQuestionString());
 int sid=survey.getId();
 int qnum=question.getQuestionNumber();
 %>
-<form onsubmit="return ResponseValidation()" action="/question?survey=${sid}&q=${qnum}" method="GET">
+<form action="regResponse" method="post">
+
 	<div class="headcontainer">
 		<div id="hd">
 			<h1>
@@ -38,7 +39,7 @@ int qnum=question.getQuestionNumber();
 	 float barwidth=70;
 	 float oneqsln=barwidth/totalqs;
 	 float setbarwidth=currentqs*oneqsln;
-	for(int i=1;i<=totalqs;i++)
+	 for(int i=1;i<=totalqs;i++)	
 	{
 
 %>
@@ -65,7 +66,7 @@ int qnum=question.getQuestionNumber();
 			for (i = 0; i < ln; i++) {
 				
 %>
-		<br> <input type="radio" name="radio" value="radio" class="onlyone"><%=opt[i]%><br>
+		<br> <input type="radio" name="optionNo" class="onlyone" value="<%=i%>"><%=opt[i]%><br>
 <%
 		}
 %>
@@ -100,6 +101,9 @@ int qnum=question.getQuestionNumber();
 	<% 
 	}
 	%>
+	<input type="hidden" name="surveyId" value="<%=sid%>">
+	<input type="hidden" name="questionId" value="<%=qnum%>">
+	<input type="hidden" name="userId" value="1">
 	</form>
 	<br>
 	<br>
