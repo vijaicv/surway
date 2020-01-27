@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+body {
+	background-color: #03A9F4;
+	font-family: 'Open Sans';
+}
+
+#maincard {
+	background-color: white;
+	margin: 100px;
+	padding: 100px;
+	border-radius: 15px;
+}
+
+#title {
+	font-weight: bold;
+	margin: 0px;
+	font-family: 'Source Sans Pro';
+}
+
+#description {
+	margin-top: 5px;
+}
+
+#total {
+	color: blue;
+	font-size: 20px;
+	font-weight: bold;
+	font-family: 'Source Sans Pro';
+	margin-left: 20px;
+}
+
+.label {
+	font-weight: bold;
+	font-family: 'Source Sans Pro';
+}
+
+.divider {
+	width: 70vw;
+	height: 2px;
+	margin: 30px auto;
+	background-color: #d6d6d6;
+}
+
+.publishButton {
+	background-color: rgb(252, 201, 36);
+	border: none;
+	color: white;
+	padding: 10px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	width: 110px;
+	border-radius: 50px;
+	font-weight: bold;
+}
+
+.publishButton:hover{
+	background-color:rgb(255, 167, 58);
+	cursor:pointer;
+}
+
+.editButton{
+	background-color: #03A9F4;
+	border: none;
+	color: white;
+	padding: 5px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	width: 110px;
+	border-radius: 30px;
+	font-weight: bold;
+	margin-left:10px;
+}
+
+.editButton:hover{
+	background-color:#021f71;
+	cursor:pointer; 
+}
+
