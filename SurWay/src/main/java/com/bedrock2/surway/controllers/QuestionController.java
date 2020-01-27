@@ -25,14 +25,17 @@ public class QuestionController {
 	@PostMapping("/addQuestion")
 	public  String addQuestion(@RequestParam(value = "mandatory") boolean mandatory,
 			@RequestParam(value = "question") String question, @RequestParam(value = "type") int type,
-			@RequestParam(value = "surveyId") int surveyId, @RequestParam(value = "optionOne") String option1,
-			@RequestParam(value = "optionTwo") String option2,
-			@RequestParam(value= "optionThree") String option3,
-			@RequestParam(value = "optionFour") String option4,
-			@RequestParam(value = "optionFive") String option5,
-			@RequestParam(value= "dropdownOptions") String dropdownOption){
+			@RequestParam(value = "surveyId") int surveyId, @RequestParam(value = "optionOne",required=false) String option1,
+			@RequestParam(value = "optionTwo",required=false) String option2,
+			@RequestParam(value= "optionThree" ,required=false) String option3,
+			@RequestParam(value = "optionFour" , required=false) String option4,
+			@RequestParam(value = "optionFive", required=false) String option5,
+			@RequestParam(value= "dropdownOptions", required=false) String dropdownOption,
+			@RequestParam(value= "questionNumber") int qNum,
+			Model m){
 
 		// save question
+
 		System.out.println("mandatory: "+mandatory+
 				" Question:"+question+
 				" Type: "+type+
@@ -41,12 +44,24 @@ public class QuestionController {
 				" optionTwo: "+option2+
 				" optionThree: "+option3+
 				" option4: "+option4+
-				" option5: "+option5);
-		String finalOption = null;
+				" option5: "+option5+
+				" questionNumber: "+qNum);
+		String[] options = new String[]{option1,option2,option3,option4,option5};
+		
+		String finalOption = option1+","+option2;
 		if(type == 4)	
 			finalOption = dropdownOption;
 		else if(type == 1 || type == 2) {
-			finalOption = option1+","+option2+","+option3+","+option4+","+option5;
+			for(int i= 2; i < 5; ++i) {
+				System.out.println("String : "+options[i]);
+				if(options[i] != null) {
+					finalOption= finalOption+","+options[i];
+				}
+				else {
+					continue;
+				}
+			}
+//			finalOption = option1+","+option2+","+option3+","+option4+","+option5;
 		}
 		System.out.println("Final Option : "+finalOption);
 		
@@ -58,10 +73,14 @@ public class QuestionController {
 		q.setSurveyId(surveyId);
 		q.setMandatory(mandatory);
 		q.setOptions(finalOption);
+		q.setQuestionNumber(qNum);
 		questionRepository.save(q);
-//
+
+		m.addAttribute("qNum",(++qNum));
+		
 //		// get current question count for survey
-//		Survey survey = surveyRepository.findById(surveyId).get();
+		Survey survey = surveyRepository.findById(surveyId).get();
+		m.addAttribute("survey", survey);
 //		System.out.println(survey.getTitle());
 //		int current = survey.getQuestionCount();
 //		System.out.println(current + 1);
