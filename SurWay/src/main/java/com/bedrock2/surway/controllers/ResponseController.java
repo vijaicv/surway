@@ -36,7 +36,7 @@ public class ResponseController {
 	
 	@PostMapping(value = "/regResponse")
 	public String registerResponse(@RequestParam("userId") int userId,
-			@RequestParam("optionNo") int optionNo, @RequestParam("questionId") int questionId,
+			@RequestParam("optionNo") String optionNo, @RequestParam("questionId") int questionId,
 			@RequestParam("surveyId") int surveyId,Model m) {
 
 		//create new response object

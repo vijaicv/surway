@@ -39,6 +39,7 @@ int qnum=question.getQuestionNumber();
 	 float barwidth=70;
 	 float oneqsln=barwidth/totalqs;
 	 float setbarwidth=currentqs*oneqsln;
+	 
 	 for(int i=1;i<=totalqs;i++)	
 	{
 	%>
@@ -59,15 +60,56 @@ int qnum=question.getQuestionNumber();
 		</div>
 		<br> <b><%=question.getQuestionNumber()%> .<%=question.getQuestionString()%></b> <br>
 		<%
+//-----Question type classification--------------------------------------------
+
+		 int type=question.getType();
+		 if(type==1)	 
+		 {
 //-----Option string is splitting---------------------------------------------
 			String[] opt=question.getOptions();
 			int i = 0, ln = opt.length;
-			for (i = 0; i < ln; i++) {
+			for (i = 0; i < ln; i++) 
+			{
 				
 	%>
 		<br> <input type="radio" name="optionNo" class="onlyone" value="<%=i%>"><%=opt[i]%><br>
 	<%
-		}
+			}
+		 }
+		 if(type==2)
+		 {	
+			 String[] opt=question.getOptions();
+				int i = 0, ln = opt.length;
+				for (i = 0; i < ln; i++) 
+				{
+			%>
+				<br> <input type="checkbox" name="optionId" class="onlyone" value="<%=i%>"><%=opt[i]%><br>
+			<%	
+				}
+		 }
+		 if(type==3)
+		 {
+			 %>
+				<br> <textarea rows="7" cols="132" name="optionId" placeholder="Remarks cannot be more than 250 characters...!"></textarea><br>
+			<%
+		 }
+		 if(type==4)
+		 {
+			 String[] opt=question.getOptions();
+				int i = 0, ln = opt.length;
+				%>
+				<select name="optionId" style="max-width:150px;">
+				<% 
+				for (i = 0; i < ln; i++) 
+				{
+			 	%>
+ 					 <option value="<%=opt[i]%>"><%=opt[i]%></option>
+				<%
+				}
+				%>
+				</select>
+				<%
+		 }
 	%>
 	</div>
 	<br>
@@ -99,6 +141,11 @@ int qnum=question.getQuestionNumber();
 	%>
 	<input type="hidden" name="surveyId" value="<%=sid%>">
 	<input type="hidden" name="questionId" value="<%=qnum%>">
+	
+	
+	<!-- 
+	-----------------User id is temporary given----------------	
+	 -->
 	<input type="hidden" name="userId" value="1">
 	</form>
 	<br>
