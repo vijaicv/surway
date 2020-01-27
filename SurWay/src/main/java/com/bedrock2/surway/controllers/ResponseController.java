@@ -83,7 +83,8 @@ public class ResponseController {
 			
 		}
 
-		return "saved";
+		//return "saved";
+		return "/question?survey="+surveyId+"&q="+(questionId+1);
 
 		// Question question =questionRepository.findById(questionId).get();
 		// m.addAttribute("question", question);
