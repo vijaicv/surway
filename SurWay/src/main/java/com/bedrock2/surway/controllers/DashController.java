@@ -1,8 +1,6 @@
 package com.bedrock2.surway.controllers;
-
 import java.util.Arrays;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Controller;
@@ -11,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.bedrock2.surway.models.Survey;
 import com.bedrock2.surway.repository.SurveyRepository;
 
@@ -26,7 +23,7 @@ public class DashController {
 	public String getDashboard(@PathVariable("id") int authorId, Model m) {
 		List<Survey> listOfSurveys = surveyRepository.findByauthorId(authorId);
 		m.addAttribute("listOfSurveys",listOfSurveys);
-		return "/views/home.jsp";
+		return "/views/dashboard.jsp";
 	}
 	
 }
