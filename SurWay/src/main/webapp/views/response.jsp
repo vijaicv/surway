@@ -1,25 +1,26 @@
 <%@page import="com.bedrock2.surway.models.Survey"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"
-	%>
-	<%@ page import="com.bedrock2.surway.models.*" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@ page import="com.bedrock2.surway.models.*" %>
 <!DOCTYPE html>
 <html>
 <head>
-<link
-	href="https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro&display=swap" rel="stylesheet">
 <title>SurWay Response Page</title>
 <link rel="stylesheet" href="css/response.css">
 </head>
 <body bgcolor="#428ABF" style="font-family: Open Sans">
+<script type="text/javascript" src="js/response.js"></script>
 <%
 //-----Recieving objects of Survey class and Question class--------------------
 //-----Setting suvey title and description-------------------------------------
 Survey survey=(Survey)request.getAttribute("surveyInfo");
 Question question=(Question)request.getAttribute("question");
 System.out.println(survey.getTitle()+question.getQuestionString());
+int sid=survey.getId();
+int qnum=question.getQuestionNumber();
 %>
+<form action="regResponse" method="post">
+
 	<div class="headcontainer">
 		<div id="hd">
 			<h1>
@@ -30,7 +31,7 @@ System.out.println(survey.getTitle()+question.getQuestionString());
 	</div>
 
 	<div class="questionstatcontainer">
-	<%
+<%
 //-----Question number and progress bar setting--------------------------------
 
 	 float totalqs=survey.getQuestionCount();
@@ -38,16 +39,17 @@ System.out.println(survey.getTitle()+question.getQuestionString());
 	 float barwidth=70;
 	 float oneqsln=barwidth/totalqs;
 	 float setbarwidth=currentqs*oneqsln;
-	for(int i=1;i<=totalqs;i++)
+	 for(int i=1;i<=totalqs;i++)	
 	{
-	%>
+
+%>
 		<div class="questionstat">
 			<div class="qsstat" style="color: white"><a href="/question?survey=<%=survey.getId()%>&q=<%=i%>"><%=i %></a></div>
 		</div>
 	
-	<% 
+<% 
 	}
-	%>
+%>
 	</div>
 	<br>
 	<div class="maincontainer">
@@ -63,24 +65,47 @@ System.out.println(survey.getTitle()+question.getQuestionString());
 			int i = 0, ln = opt.length;
 			for (i = 0; i < ln; i++) {
 				
-		%>
-		<br> <input type="radio" name="vehicle1" value="Bike" class="onlyone"><%=opt[i]%><br>
-		<%
-			}
-		%>
+%>
+		<br> <input type="radio" name="optionNo" class="onlyone" value="<%=i%>"><%=opt[i]%><br>
+<%
+		}
+%>
 
 
 	</div>
 
 	<br>
+	<%
+	if(question.getQuestionNumber()>1)
+	{
+	%>
 	<div class="btcontainerprev">
-		<button class="buttonprev">Previous</button>
+		<button class="buttonprev"><a href="/question?survey=<%=survey.getId()%>&q=<%=question.getQuestionNumber()-1%>">Previous</a></button>
 	</div>
+	<%
+	}
+	if(question.getQuestionNumber()<totalqs)
+	{
+	%>
 	<div class="btcontainernext">
-		<button class="buttonnext"><a href="/question?survey=<%=survey.getId()%>&q=<%=question.getQuestionNumber()+1%>">Next</a></button>
+		<button class="buttonnext" type="submit">Next</button>
 	</div>
+	<%
+	}
+	if(question.getQuestionNumber()==totalqs)
+	{
+	%>
+	<div class="btcontainernext">
+		<button class="buttonnext"><a href="/question?survey=<%=survey.getId()%>&q=<%=question.getQuestionNumber()%>">Submit</a></button>
+	</div>
+	<% 
+	}
+	%>
+	<input type="hidden" name="surveyId" value="<%=sid%>">
+	<input type="hidden" name="questionId" value="<%=qnum%>">
+	<input type="hidden" name="userId" value="1">
+	</form>
 	<br>
 	<br>
-	
 </body>
 </html>
