@@ -22,7 +22,6 @@ import com.bedrock2.surway.repository.UserRepository;
 @Controller
 public class ResponseController {
 	
-	
 	@Autowired
 	private ResponseRepository responseRepository;
 	
@@ -40,53 +39,16 @@ public class ResponseController {
 			@RequestParam("optionNo") String optionNo, @RequestParam("questionId") int questionId,
 			@RequestParam("surveyId") int surveyId,Model m) {
 
-		User user = userRepository.findById(userId).get();
+		//create new response object
+		//and save it in database
+		Response response = new Response();
+		response.setOptionNo(optionNo);
+		response.setQuestionId(questionId);
+		response.setSurveyId(surveyId);
+		response.setUserId(userId);
+		responseRepository.save(response);
 
-		if (user != null) {
-
-			//create new response object
-			//and save it in database
-			Response response = new Response();
-			response.setOptionNo(optionNo);
-			response.setQuestionId(questionId);
-			response.setSurveyId(surveyId);
-			response.setUserId(userId);
-			responseRepository.save(response);
-
-			//get survey data from database
-			Survey survey = surveyRepository.findById(surveyId).get();
-			if(survey==null) return "Error: invalid survey id";
-
-			//updating gender count
-			//get gender of user
-			Gender gender = user.getGender();
-			//update corresponding response count
-			switch (gender) {
-				case MALE:
-					survey.setMaleCount(survey.getMaleCount() + 1);
-					break;
-				case FEMALE:
-					survey.setFemaleCount(survey.getFemaleCount() + 1);
-					break;
-				case OTHER:
-					survey.setOtherCount(survey.getOtherCount() + 1);
-					break;
-				default:
-					return "failed";
-				}
-
-
-			//updating question count in question table
-			Question question = questionRepository.findById(questionId).get();
-			question.incrementOptionCount(optionNo);
-			questionRepository.save(question);
-			
-		
-			//if all goes well save update survey data
-			surveyRepository.save(survey);
-			
-			
-		}
+		//TODO: avoid fetching survey details everytime if possible
 		Survey surveym = surveyRepository.findById(surveyId).get();
 		m.addAttribute("surveyInfo", surveym);
 
