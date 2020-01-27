@@ -72,7 +72,7 @@ int qnum=question.getQuestionNumber();
 			{
 				
 	%>
-		<br> <input type="radio" name="optionRadio" class="onlyone" value="<%=i%>"><%=opt[i]%><br>
+		<br> <input type="radio" name="optionNo" class="onlyone" value="<%=i%>"><%=opt[i]%><br>
 	<%
 			}
 		 }
@@ -83,14 +83,14 @@ int qnum=question.getQuestionNumber();
 				for (i = 0; i < ln; i++) 
 				{
 			%>
-				<br> <input type="checkbox" name="optionCheck" class="onlyone" value="<%=i%>"><%=opt[i]%><br>
+				<br> <input type="checkbox" name="optionId" class="onlyone" value="<%=i%>"><%=opt[i]%><br>
 			<%	
 				}
 		 }
 		 if(type==3)
 		 {
 			 %>
-				<br> <textarea rows="7" cols="132" name="optionText" placeholder="Remarks cannot be more than 250 characters...!"></textarea><br>
+				<br> <textarea rows="7" cols="132" name="optionId" placeholder="Remarks cannot be more than 250 characters...!"></textarea><br>
 			<%
 		 }
 		 if(type==4)
@@ -98,7 +98,7 @@ int qnum=question.getQuestionNumber();
 			 String[] opt=question.getOptions();
 				int i = 0, ln = opt.length;
 				%>
-				<select name="optionSelect" style="max-width:150px;">
+				<select name="optionId" style="max-width:150px;">
 				<% 
 				for (i = 0; i < ln; i++) 
 				{
@@ -141,6 +141,7 @@ int qnum=question.getQuestionNumber();
 	%>
 	<input type="hidden" name="surveyId" value="<%=sid%>">
 	<input type="hidden" name="questionId" value="<%=qnum%>">
+	
 	
 	<!-- 
 	-----------------User id is temporary given----------------	
