@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Create SurWay</title>
-<link rel="stylesheet" type="text/css" href="css/createsurway.css">
+<link rel="stylesheet" type="text/css" href="/css/createsurway.css">
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro&display=swap"
 	rel="stylesheet">

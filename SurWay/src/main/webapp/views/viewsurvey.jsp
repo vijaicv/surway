@@ -33,8 +33,10 @@
 
 
 		<p>
-		<form action="">
+		<form action="/survey/edit" method="post">
 			<b><%=j + 1%></b>. <b><%=question.getQuestionString()%></b>
+			<input type="hidden" value=<%=question.getId() %> name="questionId"/>
+			<input type="hidden" value="${surveyInfo.getId()}" name="surveyId"/>
 			<button class="editButton" type="submit">edit</button>
 		</form>
 		</p>
@@ -52,12 +54,16 @@
 			<%}%>
 
 
-			<%if(type==3){%>
+			<%if(type==4){%>
 			<select>
 				<%for (int i = 0; i < options.length; i++) {%>
 					<option><%=options[i]%></option>
 				<%}%>
 			</select>
+			<%}%>
+			
+			<%if(type==3){%>
+			<div>Descriptive answer..........</div>
 			<%}%>
 
 		</ul>

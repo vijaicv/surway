@@ -57,6 +57,10 @@ public class Question {
 	public String[] getOptions() {
 		return options.split(",");
 	}
+	
+	public String getOptionsString() {
+		return options;
+	}
 
 	public void setOptions(String options) {
 		this.options = options;

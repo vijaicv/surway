@@ -10,7 +10,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link rel="stylesheet" href="css/statistics.css">
+<link rel="stylesheet" href="/css/statistics.css">
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro&display=swap"
 	rel="stylesheet">
@@ -43,7 +43,7 @@
 		<p>View statistics for individual questions</p>
 		<a href="/QStatistics?s=<%=stats.getId()%>">View Statistics</a>
 
-		<script type="text/javascript" src="js/statistics.js"></script>
+		<script type="text/javascript" src="/js/statistics.js"></script>
 		<script type="text/javascript">
             
         	let data = new Map([

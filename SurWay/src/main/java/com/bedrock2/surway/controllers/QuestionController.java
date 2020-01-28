@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bedrock2.surway.models.Question;
@@ -13,6 +14,7 @@ import com.bedrock2.surway.repository.QuestionRepository;
 import com.bedrock2.surway.repository.SurveyRepository;
 
 @Controller
+@RequestMapping("/question")
 public class QuestionController {
 	
 	@Autowired
@@ -92,7 +94,7 @@ public class QuestionController {
 	}
 	
 	
-	@GetMapping(value = "/question")
+	@PostMapping(value = "/view")
 	public String loadQuestion(@RequestParam(value = "survey") int surveyId, @RequestParam(value = "q") int questionNumber,
 			Model m) {
 
@@ -105,5 +107,47 @@ public class QuestionController {
 	}
 	
 	
+	@PostMapping("/update")
+	public String updateQuestion(
+			@RequestParam("questionId") int questionId,
+			@RequestParam(value = "mandatory",required=false) boolean mandatory,
+			@RequestParam(value = "question") String question, @RequestParam(value = "type") int type,
+			@RequestParam(value = "surveyId") int surveyId, @RequestParam(value = "optionOne",required=false) String option1,
+			@RequestParam(value = "optionTwo",required=false) String option2,
+			@RequestParam(value= "optionThree" ,required=false) String option3,
+			@RequestParam(value = "optionFour" , required=false) String option4,
+			@RequestParam(value = "optionFive", required=false) String option5,
+			@RequestParam(value= "dropdownOptions", required=false) String dropdownOption,
+			Model m) {
+		
+String[] options = new String[]{option1,option2,option3,option4,option5};
+		
+		String finalOption = option1+","+option2;
+		if(type == 4)	
+			finalOption = dropdownOption;
+		else if(type == 1 || type == 2) {
+			for(int i= 2; i < 5; ++i) {
+				System.out.println("String : "+options[i]);
+				if(options[i] != null) {
+					finalOption= finalOption+","+options[i];
+				}
+				else {
+					continue;
+				}
+			}
+		}
+		System.out.println("Final Option : "+finalOption);
+	
+		Question q = questionRepository.findById(questionId).get();
+		q.setQuestionString(question);
+		q.setType(type);
+		q.setMandatory(mandatory);
+		q.setOptions(finalOption);
+		questionRepository.save(q);
+		Survey survey = surveyRepository.findById(surveyId).get();
+		m.addAttribute("survey", survey);
+		return "/views/survey_completed.jsp";
+		
+	}
 	
 }

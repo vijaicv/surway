@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bedrock2.surway.models.Question;
@@ -51,8 +52,8 @@ public class SurveyController {
 	}
 	
 	
-	@GetMapping("/view/{id}")
-	public String getSurvey(@PathVariable("id")int surveyId, Model m) {
+	@GetMapping("/view")
+	public String getSurvey(@RequestParam("id")int surveyId, Model m) {
 		
 		Survey survey = surveyRepository.findById(surveyId).get();
 		m.addAttribute("surveyInfo",survey);
@@ -62,5 +63,19 @@ public class SurveyController {
 		
 		return "/views/viewsurvey.jsp";
 	}
+	
+	
+	@PostMapping("/edit")
+	public String loadEditPage(@RequestParam("surveyId")int surveyId,@RequestParam("questionId")int questionId,Model m) {
+		Survey survey = surveyRepository.findById(surveyId).get();
+		m.addAttribute("surveyInfo",survey);
+		
+		Question question = questionRepository.findById(questionId).get();
+		m.addAttribute("question",question);
+		return "/views/editsurvey.jsp";
+	}
+	
+	
+	
 
 }
