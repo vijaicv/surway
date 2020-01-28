@@ -96,27 +96,28 @@
 </style>
 </head>
 <body style="background-color: #03A9F4; font-family: Open Sans">
+	<form action="/survey/create" method="post">
 
-	<div class="box">
-		<h1 class="head">Create New Survey</h1>
-		<br>
-		<div class="div1">
-			<form action="/create" method="post">
+		<div class="box">
+			<h1 class="head">Create New Survey</h1>
+			<br>
+			<div class="div1">
 				<input type="text" name="title" maxlength="100" class="title"
 					placeholder="Title"><br>
-		</div>
-		<input type="hidden" name="authorId" value="101">
-		<div class="div1">
-			<textarea name="description" class="textarea" rows="3" cols="25"
-				maxlength="2000" placeholder="Description"></textarea>
-		</div>
+			</div>
+			<input type="hidden" name="authorId" value="101">
+			<div class="div1">
+				<textarea name="description" class="textarea" rows="3" cols="25"
+					maxlength="2000" placeholder="Description"></textarea>
+			</div>
 
-		<div class="div2">
-			<button type="submit" class="button">
-				<span>Submit</span>
-			</button>
+			<div class="div2">
+				<button type="submit" class="button">
+					<span>Submit</span>
+				</button>
+			</div>
 		</div>
-		</form>
-	</div>
+	</form>
+
 </body>
 </html>
