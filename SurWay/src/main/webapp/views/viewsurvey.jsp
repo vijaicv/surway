@@ -72,7 +72,8 @@
 		<%
 			}
 		%>
-		<form action="">
+		<form action="/survey/publish" method="post">
+			<input type="hidden" value="${surveyInfo.getId()}" name="surveyId">
 			<button class="publishButton" type="submit">publish</button>
 		</form>
 	</div>

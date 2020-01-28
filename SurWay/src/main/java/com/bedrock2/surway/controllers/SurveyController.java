@@ -76,6 +76,16 @@ public class SurveyController {
 	}
 	
 	
+	@PostMapping("/publish")
+	public String publishSurvey(@RequestParam("surveyId") int surveyId,Model m) {
+		m.addAttribute("surveyId",surveyId);
+		Survey survey = surveyRepository.findById(surveyId).get();
+		survey.setPublished(true);
+		surveyRepository.save(survey);
+		return "/views/survey_published.jsp";
+	}
+	
+	
 	
 
 }

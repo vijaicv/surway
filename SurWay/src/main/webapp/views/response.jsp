@@ -6,7 +6,7 @@
 <head>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro&display=swap" rel="stylesheet">
 <title>SurWay Response Page</title>
-<link rel="stylesheet" href="css/response.css">
+<link rel="stylesheet" href="/css/response.css">
 </head>
 <body bgcolor="#428ABF" style="font-family: Open Sans">
 <script type="text/javascript" src="js/response.js"></script>
