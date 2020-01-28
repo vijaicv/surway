@@ -23,6 +23,7 @@ public class DashController {
 	public String getDashboard(@PathVariable("id") int authorId, Model m) {
 		List<Survey> listOfSurveys = surveyRepository.findByauthorId(authorId);
 		m.addAttribute("listOfSurveys",listOfSurveys);
+		System.out.println(listOfSurveys);
 		return "/views/dashboard.jsp";
 	}
 	
