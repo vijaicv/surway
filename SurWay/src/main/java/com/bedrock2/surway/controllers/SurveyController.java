@@ -35,6 +35,12 @@ public class SurveyController {
 	@Autowired
 	private UserRepository userRepository;
 	
+
+	@GetMapping("/createnew")
+	public String loadCreatePage() {
+		return "/views/createnew.jsp";
+	}
+	
 	
 	@PostMapping("/create")
 	public String createSurvey(HttpServletRequest request, Model m) {
@@ -49,6 +55,13 @@ public class SurveyController {
 	    m.addAttribute("survey",s);
 	    m.addAttribute("qNum",1);
 		return "/views/createsurvey.jsp";
+	}
+	
+	@PostMapping("/delete")
+	public String deleteSurvey(@RequestParam("surveyId") int surveyId) {
+		Survey survey = surveyRepository.findById(surveyId).get();
+		surveyRepository.delete(survey);
+		return "/views/survey_deleted.jsp";
 	}
 	
 	

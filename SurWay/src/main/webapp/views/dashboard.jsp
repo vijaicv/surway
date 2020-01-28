@@ -37,8 +37,7 @@
 
 		<div class="box">
 			<div class="title"><%= survey.getTitle() %></div>
-			<br>
-			<br>
+			<br> <br>
 			<div class="description"><%= survey.getDescription() %></div>
 
 			<div class="ul">
@@ -47,7 +46,7 @@
 					<ul>
 						<li><img src="/images/Edit-icon.png" style="width: 30px;">
 						</li>
-						<li style="font-size: 18px;"><a href="">Edit</a></li>
+						<li style="font-size: 18px;"><a href="/survey/view?id=<%= survey.getId() %>">Edit</a></li>
 
 					</ul>
 
@@ -60,14 +59,14 @@
 						</ul>
 					</div>
 
-					<div class="innericons3" id="hover1">
+				<!--  	<div class="innericons3" id="hover1">
 						<ul>
 							<li><img src="/images/eye-icon.png" style="width: 30px;">
 							</li>
-							<li style="font-size: 18px;"><a href="">View</a></li>
+							<li style="font-size: 18px;"><a href="/survey/view?id=<%= survey.getId() %>">View</a></li>
 
 						</ul>
-					</div>
+					</div>-->
 
 				</div>
 
@@ -76,18 +75,48 @@
 		<%
 			}
 		%>
-			</div>
+	</div>
 
-		<div class="publish">
-			<div class="publishh3">
-				<h3>Published</h3>
-			</div>
+	<div class="publish">
+
+		<div class="publishh3">
+			<h3>Published</h3>
+		</div>
+		<hr></div>
+		<div class = "secondouterbox">
+		<%for (int k = 0; k < listofsurvey.size(); k++) {%>
+		<%  Survey survey = listofsurvey.get(k);
+          System.out.println(survey.getTitle()); %>
+	
+	
+	
+
+	<div class="publishbox">
+		<div class="title"><%= survey.getTitle() %></div>
+		<br>
+		<br>
+		<div class="description"><%= survey.getDescription() %></div>
+
+		<div class="publishicon">
 			<hr>
-		</div>
-		<div class="publishbox"></div>
+			<ul class="publishul">
+				<li><img src="/images/eye-icon.png" style="width: 30px;">
+				</li>
+				<li style="font-size: 18px;"><a href="/statistics?survey=<%= survey.getId() %>">View</a></li>
 
-		<div class="button" id="buttonid">
-			<a href="/create"><span>Create New</span> </a>
+			</ul>
 		</div>
+	
+	</div>
+	<%
+			}
+		%>
+		</div>
+
+	<div class="button" id="buttonid">
+		<a href="/survey/createnew"><span>Create New</span> </a>
+	</div>
+
+
 </body>
 </html>

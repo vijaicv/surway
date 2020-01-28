@@ -16,6 +16,10 @@
  	<%
 		Survey survey = (Survey)request.getAttribute("survey");
 	%>
+	
+	
+
+ <script type="text/javascript" src="/js/createsurvey.js"></script>
 
 
 
