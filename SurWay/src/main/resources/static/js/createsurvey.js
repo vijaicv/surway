@@ -1,6 +1,6 @@
 
 function disableRadio(){
-	document.getElementById("myRadio").disabled = true;
+	document.getElementsByClassName("myRadio").disabled = true;
 }
 var count = 1
 function addingOption(){

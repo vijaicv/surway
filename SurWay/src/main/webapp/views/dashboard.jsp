@@ -87,7 +87,7 @@
 		<div class="publishbox"></div>
 
 		<div class="button" id="buttonid">
-			<a href="/createsurvey"><span>Create New</span> </a>
+			<a href="/create"><span>Create New</span> </a>
 		</div>
 </body>
 </html>

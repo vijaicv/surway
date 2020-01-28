@@ -10,14 +10,12 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro&display=swap"
 	rel="stylesheet">
-	
-	<%
+
+ <script type="text/javascript" src="/js/createsurvey.js"></script>
+ 
+ 	<%
 		Survey survey = (Survey)request.getAttribute("survey");
 	%>
-	
-	
-
- <script type="text/javascript" src="/JS/createsurvey.js"></script>
 
 
 
@@ -25,7 +23,7 @@
 <body onload="disableRadio()">
     <h1><%= survey.getTitle() %></h1>
     <p id= "description"><%= survey.getDescription() %></p>
-    <form action="/addQuestion" onsubmit= "checkEmpty(this)" method= "post">
+    <form action="/question/addQuestion" onsubmit= "checkEmpty(this)" method= "post">
     	 <div class="mainbox">
         	<div id = "typecontainer">
            		 <b><label>Type :-</label></b>
@@ -47,19 +45,19 @@
             	<input type="hidden" name="questionNumber" value=<%= num %>>
             	<textarea rows = "7" cols = "125" placeholder="Type your Question here." name="question" required="required"></textarea><br><br>
             	<div id= "MCQSection" style= "display: block">
-           			<input id="myRadio" type ="radio">&nbsp&nbsp<input type= "text" name="optionOne" >
-            		<input type ="radio" id="myRadio">&nbsp&nbsp<input type= "text" name="optionTwo" ><br><br>
-            		<div id="additionalOption1" style= "display: none"><input type ="radio" id="myRadio">&nbsp&nbsp<input type= "text" name="optionThree"></div>
-            		<div id="additionalOption2" style= "display: none"><input type ="radio" id="myRadio">&nbsp&nbsp<input type= "text" name="optionFour"><br><br></div>
-            		<div id="additionalOption3" style= "display: none"><input type ="radio" id="myRadio">&nbsp&nbsp<input type= "text" name="optionFive"><br></div>
+           			<input class="myRadio" type ="radio">&nbsp&nbsp<input type= "text" name="optionOne" >
+            		<input type ="radio" class="myRadio">&nbsp&nbsp<input type= "text" name="optionTwo" ><br><br>
+            		<div id="additionalOption1" style= "display: none"><input type ="radio" class="myRadio">&nbsp&nbsp<input type= "text" name="optionThree"></div>
+            		<div id="additionalOption2" style= "display: none"><input type ="radio" class="myRadio">&nbsp&nbsp<input type= "text" name="optionFour"><br><br></div>
+            		<div id="additionalOption3" style= "display: none"><input type ="radio" class="myRadio">&nbsp&nbsp<input type= "text" name="optionFive"><br></div>
             		<center><button type= "button" onclick= "addingOption()">Add Option</button></center>
             	</div>
 				<div id="multipleAnswers" style = "display: none">
-					<input type ="radio" id="myRadio">&nbsp&nbsp<input type= "text" name="optionOne">
-            		<input type ="radio" id="myRadio">&nbsp&nbsp<input type= "text" name="optionTwo"><br><br>
-            		<div id="additionalOption1" style= "display: none"><input type ="radio" id="myRadio">&nbsp&nbsp<input type= "text" name="optionThree"></div>
-            		<div id="additionalOption2" style= "display: none"><input type ="radio" id="myRadio">&nbsp&nbsp<input type= "text" name="optionFour"><br><br></div>
-            		<div id="additionalOption3" style= "display: none"><input type ="radio" id="myRadio">&nbsp&nbsp<input type= "text" name="optionFive"><br></div>
+					<input type ="radio" class="myRadio">&nbsp&nbsp<input type= "text" name="optionOne">
+            		<input type ="radio" class="myRadio">&nbsp&nbsp<input type= "text" name="optionTwo"><br><br>
+            		<div id="additionalOption1" style= "display: none"><input type ="radio" class="myRadio">&nbsp&nbsp<input type= "text" name="optionThree"></div>
+            		<div id="additionalOption2" style= "display: none"><input type ="radio" class="myRadio">&nbsp&nbsp<input type= "text" name="optionFour"><br><br></div>
+            		<div id="additionalOption3" style= "display: none"><input type ="radio" class="myRadio">&nbsp&nbsp<input type= "text" name="optionFive"><br></div>
             		<center><button type= "button" onclick= "addingOption()">Add Option</button></center>
 				</div>
 				<div id= "descriptive" style="display: none">
