@@ -35,6 +35,12 @@ public class SurveyController {
 	@Autowired
 	private UserRepository userRepository;
 	
+
+	@GetMapping("/createnew")
+	public String loadCreatePage() {
+		return "/views/createnew.jsp";
+	}
+	
 	
 	@PostMapping("/create")
 	public String createSurvey(HttpServletRequest request, Model m) {

@@ -17,7 +17,7 @@
 	
 	
 
- <script type="text/javascript" src="/JS/createsurvey.js"></script>
+ <script type="text/javascript" src="/js/createsurvey.js"></script>
 
 
 

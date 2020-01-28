@@ -86,10 +86,6 @@ public class HomeController {
 	}
 	
 	
-	@GetMapping("/create")
-	public String loadCreatePage() {
-		return "/views/createnew.jsp";
-	}
 	
 	
 	
