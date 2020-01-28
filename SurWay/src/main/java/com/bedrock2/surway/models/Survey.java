@@ -21,10 +21,21 @@ public class Survey{
     
     int maleCount,femaleCount,otherCount;
 
+    boolean published=false;
+    
+    
     
 
     
-    public int getAuthorId() {
+    public boolean isPublished() {
+		return published;
+	}
+
+	public void setPublished(boolean published) {
+		this.published = published;
+	}
+
+	public int getAuthorId() {
 		return authorId;
 	}
 

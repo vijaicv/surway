@@ -63,9 +63,11 @@
 </head>
 <body style="background-color:#03A9F4;font-family: Open Sans">
   
+    
 <div class="box">
   <h1 class="head">Survey Completed Sucessfully<h1>
     <button class="button"><span>Go to DashBoard</span></button>
 </div>
+
 </body>
 </html>

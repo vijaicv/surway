@@ -99,7 +99,7 @@ public class QuestionController {
 		Survey survey = surveyRepository.findById(surveyId).get();
 		m.addAttribute("surveyInfo", survey);
 
-		Question question =questionRepository.findByQuestionNumber(questionNumber)	;
+		Question question =questionRepository.findByQuestionNumberAndSurveyId(questionNumber,surveyId)	;
 		m.addAttribute("question", question);
 		return "/views/response.jsp";
 	}
