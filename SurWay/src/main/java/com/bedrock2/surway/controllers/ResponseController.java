@@ -36,9 +36,12 @@ public class ResponseController {
 	
 	@PostMapping(value = "/regResponse")
 	public String registerResponse(@RequestParam("userId") int userId,
-			@RequestParam("optionNo") String optionNo, @RequestParam("questionId") int questionId,
+			@RequestParam("optionNo") String optionNo,			
+			@RequestParam("questionId") int questionId,
 			@RequestParam("surveyId") int surveyId,Model m) {
-
+		//getting check box value
+		//System.out.println(optioncheck1);
+	
 		//create new response object
 		//and save it in database
 		Response response = new Response();

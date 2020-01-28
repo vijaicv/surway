@@ -6,7 +6,7 @@
 <head>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro&display=swap" rel="stylesheet">
 <title>SurWay Response Page</title>
-<link rel="stylesheet" href="css/response.css">
+<link rel="stylesheet" href="/css/response.css">
 </head>
 <body bgcolor="#428ABF" style="font-family: Open Sans">
 <script type="text/javascript" src="js/response.js"></script>
@@ -44,7 +44,7 @@ int qnum=question.getQuestionNumber();
 	{
 	%>
 		<div class="questionstat">
-			<div class="qsstat" style="color: white"><a href="/question?survey=<%=survey.getId()%>&q=<%=i%>"><%=i %></a></div>
+			<div class="qsstat" style="color: white"><a href="/question/view?survey=<%=survey.getId()%>&q=<%=i%>"><%=i %></a></div>
 		</div>
 	
 	<% 
@@ -83,7 +83,7 @@ int qnum=question.getQuestionNumber();
 				for (i = 0; i < ln; i++) 
 				{
 			%>
-				<br> <input type="checkbox" name="optionId" class="onlyone" value="<%=i%>"><%=opt[i]%><br>
+				<br> <input type="checkbox" name="optioncheck<%=i%>" class="onlyone" value="<%=i%>"><%=opt[i]%><br>
 			<%	
 				}
 		 }
@@ -118,7 +118,7 @@ int qnum=question.getQuestionNumber();
 	{
 	%>
 	<div class="btcontainerprev">
-		<button class="buttonprev"><a href="/question?survey=<%=survey.getId()%>&q=<%=question.getQuestionNumber()-1%>">Previous</a></button>
+		<button class="buttonprev"><a href="/question/view?survey=<%=survey.getId()%>&q=<%=question.getQuestionNumber()-1%>">Previous</a></button>
 	</div>
 	<%
 	}
