@@ -1,6 +1,7 @@
 <%@page import="com.bedrock2.surway.models.Survey"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
 <%@ page import="com.bedrock2.surway.models.*" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +11,7 @@
 </head>
 <body bgcolor="#428ABF" style="font-family: Open Sans">
 <script type="text/javascript" src="js/response.js"></script>
+
 <%
 //-----Recieving objects of Survey class and Question class--------------------
 //-----Setting suvey title and description-------------------------------------
@@ -19,7 +21,8 @@ System.out.println(survey.getTitle()+question.getQuestionString());
 int sid=survey.getId();
 int qnum=question.getQuestionNumber();
 %>
-<form action="regResponse" method="post">
+
+<form action="/regResponse" method="post">
 
 	<div class="headcontainer">
 		<div id="hd">
@@ -44,7 +47,7 @@ int qnum=question.getQuestionNumber();
 	{
 	%>
 		<div class="questionstat">
-			<div class="qsstat" style="color: white"><a href="/question?survey=<%=survey.getId()%>&q=<%=i%>"><%=i %></a></div>
+			<div class="qsstat" style="color: white"><a href="/question/view?survey=<%=survey.getId()%>&q=<%=i%>"><%=i %></a></div>
 		</div>
 	
 	<% 
@@ -79,12 +82,12 @@ int qnum=question.getQuestionNumber();
 		 if(type==2)
 		 {	
 			 String[] opt=question.getOptions();
-				int i = 0, ln = opt.length;
-				for (i = 0; i < ln; i++) 
+				int i=0,ln = opt.length;
+				for(i=0;i<ln;i++)
 				{
 			%>
-				<br> <input type="checkbox" name="optionId" class="onlyone" value="<%=i%>"><%=opt[i]%><br>
-			<%	
+				<br> <input type="checkbox" name="optioncheck<%=i%>" class="onlyone" value="<%=i%>"><%=opt[i]%><br>
+			<% 
 				}
 		 }
 		 if(type==3)
@@ -114,11 +117,12 @@ int qnum=question.getQuestionNumber();
 	</div>
 	<br>
 	<%
+//-----Next and previous button displays with conditions-----------------------
 	if(question.getQuestionNumber()>1)
 	{
 	%>
 	<div class="btcontainerprev">
-		<button class="buttonprev"><a href="/question?survey=<%=survey.getId()%>&q=<%=question.getQuestionNumber()-1%>">Previous</a></button>
+		<button class="buttonprev"><a href="/question/view?survey=<%=survey.getId()%>&q=<%=question.getQuestionNumber()-1%>">Previous</a></button>
 	</div>
 	<%
 	}
@@ -138,13 +142,15 @@ int qnum=question.getQuestionNumber();
 	</div>
 	<% 
 	}
+//-----surveyId and userId are set to type hidden-----------------------
 	%>
+
 	<input type="hidden" name="surveyId" value="<%=sid%>">
-	<input type="hidden" name="questionId" value="<%=qnum%>">
+	<input type="hidden" name="questionNo" value="<%=qnum%>">
 	
 	
 	<!-- 
-	-----------------User id is temporary given----------------	
+-------User id is temporary given---------------------------------------
 	 -->
 	<input type="hidden" name="userId" value="1">
 	</form>
