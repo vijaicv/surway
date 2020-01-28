@@ -51,6 +51,13 @@ public class SurveyController {
 		return "/views/createsurvey.jsp";
 	}
 	
+	@PostMapping("/delete")
+	public String deleteSurvey(@RequestParam("surveyId") int surveyId) {
+		Survey survey = surveyRepository.findById(surveyId).get();
+		surveyRepository.delete(survey);
+		return "/views/survey_deleted.jsp";
+	}
+	
 	
 	@GetMapping("/view")
 	public String getSurvey(@RequestParam("id")int surveyId, Model m) {
