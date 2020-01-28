@@ -16,7 +16,7 @@
   	<h1 style="color:white;font-size: 70px;font-family: open Sans">SurWay</h1>
   	<p style="color:white ">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
   	tempor incididunt ut labore et dolore magna aliqua.</p>
-  	<button class="button"><a  href="/createsurvey">Get Started</a></button>
+  	<button class="button"><a  href="/Dashboard/101">Get Started</a></button>
   </div>
  
 </div>

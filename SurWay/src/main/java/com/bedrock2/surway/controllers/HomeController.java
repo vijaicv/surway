@@ -42,27 +42,6 @@ public class HomeController {
 		return "/views/loginSignup.jsp";
 	}
 	
-	@GetMapping("/dashboard")
-	public String loadDash(Model m) {
-
-		/**
-		 * here we do some database operations to get all the surveys for one user
-		 * we get an array of survey objects as response that we will set as response 
-		 * use this to display data in dashboard.jsp
-		 */
-
-		//fake data for temporary use
-		Survey[] surveys = new Survey[]{
-			new Survey("Employee feedback survey",
-			"a survey to collect employee feedback",
-			20),
-
-			new Survey("Vishu celebs", "plans for vishu celebs", 15)
-		};
-
-		m.addAttribute("surveys", surveys);
-		return "/views/dashboard.jsp";
-	}
 	
 	@GetMapping("/response")
 	public String loadSurvey(Model m) {

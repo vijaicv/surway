@@ -37,9 +37,9 @@
                 	<option value = "3" >Descriptive</option>
                 	<option value = "4" >Dropdown</option>
             	</select><br><br>
-            	<input type="hidden" name="surveyId" value="46">
+            	<input type="hidden" name="surveyId" value=<%= survey.getId() %>>
             	<input type = "checkbox" name="mandatory" value="true"><b>Mandatory</b><br><br><br><br>
-            	<a id= "finishButton" href="/">Finish</a><br>
+            	<a id= "finishButton" href="/Dashboard/101">Finish</a><br>
             	<label>Q${qNum}</label>
             	<%
             		int num = (int)(request.getAttribute("qNum"));
