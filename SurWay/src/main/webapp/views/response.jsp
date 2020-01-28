@@ -90,7 +90,7 @@ int qnum=question.getQuestionNumber();
 		 if(type==3)
 		 {
 			 %>
-				<br> <textarea rows="7" cols="132" name="optionId" placeholder="Remarks cannot be more than 250 characters...!"></textarea><br>
+				<br> <textarea rows="7" cols="132" name="optionNo" placeholder="Remarks cannot be more than 250 characters...!"></textarea><br>
 			<%
 		 }
 		 if(type==4)
@@ -98,7 +98,7 @@ int qnum=question.getQuestionNumber();
 			 String[] opt=question.getOptions();
 				int i = 0, ln = opt.length;
 				%>
-				<select name="optionId" style="max-width:150px;">
+				<select name="optionNo" style="max-width:150px;">
 				<% 
 				for (i = 0; i < ln; i++) 
 				{

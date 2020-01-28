@@ -92,7 +92,7 @@ public class QuestionController {
 	}
 	
 	
-	@PostMapping(value = "/view")
+	@GetMapping(value = "/view")
 	public String loadQuestion(@RequestParam(value = "survey") int surveyId, @RequestParam(value = "q") int questionNumber,
 			Model m) {
 
