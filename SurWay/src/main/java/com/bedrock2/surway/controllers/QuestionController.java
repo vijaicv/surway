@@ -25,7 +25,7 @@ public class QuestionController {
 	
 	
 	@PostMapping("/addQuestion")
-	public  String addQuestion(@RequestParam(value = "mandatory") boolean mandatory,
+	public  String addQuestion(@RequestParam(value = "mandatory", required = false) boolean mandatory,
 			@RequestParam(value = "question") String question, @RequestParam(value = "type") int type,
 			@RequestParam(value = "surveyId") int surveyId, @RequestParam(value = "optionOne",required=false) String option1,
 			@RequestParam(value = "optionTwo",required=false) String option2,
@@ -80,16 +80,14 @@ public class QuestionController {
 
 		m.addAttribute("qNum",(++qNum));
 		
-//		// get current question count for survey
 		Survey survey = surveyRepository.findById(surveyId).get();
 		m.addAttribute("survey", survey);
-//		System.out.println(survey.getTitle());
-//		int current = survey.getQuestionCount();
-//		System.out.println(current + 1);
-//
-//		// increment question count
-//		survey.setQuestionCount(current + 1);
-//		surveyRepository.save(survey);
+		System.out.println(survey.getTitle());
+		int current = survey.getQuestionCount();
+		System.out.println(current + 1);
+
+		survey.setQuestionCount(current + 1);
+		surveyRepository.save(survey);
 		return "/views/createsurvey.jsp";
 	}
 	

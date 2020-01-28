@@ -14,95 +14,18 @@
 	<%
 		Survey survey = (Survey)request.getAttribute("survey");
 	%>
-
-<script>
-	function disableRadio(){
-		document.getElementById("myRadio").disabled = true;
-	}
-	var count = 1
-	function addingOption(){
-		if(count == 1){
-			console.log("Im in 1")
-			document.getElementById("additionalOption1").style.display = "block";
-			document.getElementById("additionalOption2").style.display = "none";
-			document.getElementById("additionalOption3").style.display = "none";
-			count++;
-
-		}
-		else if(count == 2){
-			console.log("im in 2")
-			document.getElementById("additionalOption1").style.display = "block";
-			document.getElementById("additionalOption2").style.display = "block";
-			document.getElementById("additionalOption3").style.display = "none";
-			count++;
-
-		}
-		else if(count == 3){
-			console.log("im in 3")
-			document.getElementById("additionalOption1").style.display = "block";
-			document.getElementById("additionalOption2").style.display = "block";
-			document.getElementById("additionalOption3").style.display = "block";
-			count++;
-
-		}
-		else if(count > 3){
-			alert("Maximum option of 5 has reached..Please try Dropdown type for more options")
-		}
-	}
 	
-	function checkEmpty(form) {
-		  var controls = form.elements;
-		  for (var i=0, iLen=controls.length; i<iLen; i++) {
-		    controls[i].disabled = controls[i].value == '';
-		  }
-		}
 	
-	function selectingOptionType(selectedValue){
-		console.log("This is from script"+selectedValue)
-		if(selectedValue == "2"){
-			console.log("This is from script"+selectedValue)
 
-			document.getElementById('MCQSection').style.display = "none";	
-			document.getElementById('multipleAnswers').style.display = "block";	
-			document.getElementById('descriptive').style.display = "none";	
-			document.getElementById('dropdownAnswer').style.display = "none";	
+ <script type="text/javascript" src="/JS/createsurvey.js"></script>
 
-
-		}
-		else if(selectedValue == "4"){
-			console.log("This is from script"+selectedValue)
-
-			document.getElementById('MCQSection').style.display = "none";	
-			document.getElementById('multipleAnswers').style.display = "none";	
-			document.getElementById('descriptive').style.display = "none";	
-			document.getElementById('dropdownAnswer').style.display = "block";
-		}
-		else if(selectedValue == "3"){
-			console.log("This is from script"+selectedValue)
-
-			document.getElementById('MCQSection').style.display = "none";	
-			document.getElementById('multipleAnswers').style.display = "none";	
-			document.getElementById('descriptive').style.display = "block";	
-			document.getElementById('dropdownAnswer').style.display = "none";		}
-		else if(selectedValue == "1") {
-			console.log("This is from script"+selectedValue)
-
-			document.getElementById('MCQSection').style.display = "block";	
-			document.getElementById('multipleAnswers').style.display = "none";	
-			document.getElementById('descriptive').style.display = "none";	
-			document.getElementById('dropdownAnswer').style.display = "none";
-		}
-		
-		
-	}
-</script>
 
 
 </head>
 <body onload="disableRadio()">
     <h1><%= survey.getTitle() %></h1>
     <p id= "description"><%= survey.getDescription() %></p>
-    <form action="addQuestion" onsubmit= "checkEmpty(this)" method= "post">
+    <form action="/addQuestion" onsubmit= "checkEmpty(this)" method= "post">
     	 <div class="mainbox">
         	<div id = "typecontainer">
            		 <b><label>Type :-</label></b>
@@ -113,7 +36,7 @@
                 	<option value = "4" >Dropdown</option>
             	</select><br><br>
             	<input type="hidden" name="surveyId" value="46">
-            	<input type = "radio" name="mandatory" value="true"><b>Mandatory</b><br><br><br><br>
+            	<input type = "checkbox" name="mandatory" value="true"><b>Mandatory</b><br><br><br><br>
             	<a id= "finishButton" href="/">Finish</a><br>
             	<label>Q${qNum}</label>
             	<%
