@@ -109,14 +109,26 @@ public class QuestionController {
 	public String updateQuestion(
 			@RequestParam("questionId") int questionId,
 			@RequestParam(value = "mandatory",required=false) boolean mandatory,
-			@RequestParam(value = "question") String question, @RequestParam(value = "type") int type,
-			@RequestParam(value = "surveyId") int surveyId, @RequestParam(value = "optionOne",required=false) String option1,
+			@RequestParam(value = "question") String question,
+			@RequestParam(value = "type") int type,
+			@RequestParam(value = "surveyId") int surveyId, 
+			@RequestParam(value = "optionOne",required=false) String option1,
 			@RequestParam(value = "optionTwo",required=false) String option2,
 			@RequestParam(value= "optionThree" ,required=false) String option3,
 			@RequestParam(value = "optionFour" , required=false) String option4,
 			@RequestParam(value = "optionFive", required=false) String option5,
 			@RequestParam(value= "dropdownOptions", required=false) String dropdownOption,
 			Model m) {
+		
+		System.out.println("mandatory: "+mandatory+
+				" Question:"+question+
+				" Type: "+type+
+				" SurveyId: "+surveyId+
+				" optionOne: "+option1+
+				" optionTwo: "+option2+
+				" optionThree: "+option3+
+				" option4: "+option4+
+				" option5: "+option5);
 		
 String[] options = new String[]{option1,option2,option3,option4,option5};
 		
@@ -134,7 +146,7 @@ String[] options = new String[]{option1,option2,option3,option4,option5};
 				}
 			}
 		}
-		System.out.println("Final Option : "+finalOption);
+		System.out.println("Final Option : "+finalOption+questionId);
 	
 		Question q = questionRepository.findById(questionId).get();
 		q.setQuestionString(question);
