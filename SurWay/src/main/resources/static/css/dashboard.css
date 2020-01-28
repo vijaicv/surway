@@ -1,79 +1,76 @@
 @charset "UTF-8";
- .div1 h1{
-           font-family: sans-serif;
-           color: #428abf;
-           position: absolute;
-           top: 8.5px;
-           left: 92px;
-           font-size: 3.5em;
 
-       }
-       .div1 img{
-           position: absolute;
-           top: 39px;
-           left: 0px;
-       }
-       .div1 hr{
-        display: block;
-        margin-top: 9em;
-        margin-bottom: 0.5em;
-        margin-left: auto;
-        margin-right: auto;
-        border-style: inset; 
-        height: 12px;
-         border: 0; 
-         box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5); 
-        }
+.div1 h1 {
+	font-family: sans-serif;
+	color: #428abf;
+	position: absolute;
+	top: 8.5px;
+	left: 92px;
+	font-size: 3.5em;
+}
 
-        .drafth3{
-            position: absolute;
-            top: 11.5em;
-            left: 5em;
-        }
+.div1 img {
+	position: absolute;
+	top: 39px;
+	left: 0px;
+}
 
-      
-       .draft hr{
-        display: block;
-        margin-top: 4em;
-        margin-bottom: 0.5em;
-        margin-left: 9em;
-        margin-right: auto;
-        border: 0;
-         height: 1px;
+.div1 hr {
+	display: block;
+	margin-top: 9em;
+	margin-bottom: 0.5em;
+	margin-left: auto;
+	margin-right: auto;
+	border-style: inset;
+	height: 12px;
+	border: 0;
+	box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
+}
 
+.drafth3 {
+	position: absolute;
+	top: 11.5em;
+	left: 5em;
+}
+
+.draft hr {
+	display: block;
+	margin-top: 4em;
+	margin-bottom: 0.5em;
+	margin-left: 9em;
+	margin-right: auto;
+	border: 0;
+	height: 1px;
 	border-top: 1px solid #8c8b8b;
 	border-bottom: 1px solid #fff;
-          /* background-image: linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)); */
+	/* background-image: linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)); */
+}
 
-       }
-       
-       
-       .box{
- box-sizing: content-box;
-width: 260px;
-height: 240px;
-padding: 30px;
-border: 1px solid gainsboro;
-margin-top: 2em;
-margin-left: 10px;
-margin-bottom: auto;
-margin-right: 10px;
-max-width: 250px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  text-align: center;
-  flex: 1;
-min-width: 250px;
-  /* display: none; */
-  }
-  
-  
+.box {
+	box-sizing: content-box;
+	width: 260px;
+	height: 240px;
+	padding: 30px;
+	border: 1px solid gainsboro;
+	margin-top: 2em;
+	margin-left: 10px;
+	margin-bottom: auto;
+	margin-right: 10px;
+	max-width: 250px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+		rgba(0, 0, 0, 0.19);
+	text-align: center;
+	flex: 1;
+	min-width: 250px;
+	/* display: none; */
+}
+
 /* 
 #box:hover {
   -ms-transform: scale(1.0); /* IE 9 */
-  /* -webkit-transform: scale(1.0); /* Safari 3-8 */
-  /* transform: scale(1.0); 
-} */ 
-
+/* -webkit-transform: scale(1.0); /* Safari 3-8 */
+/* transform: scale(1.0); 
+} */
 
 /* 
 .ul hr{
@@ -85,22 +82,16 @@ min-width: 250px;
     padding: 0px;
 
 } */
-
-.innericons{
-    display: flex;
-height: 70px;
-margin: 0 auto;
-
+.innericons {
+	display: flex;
+	height: 70px;
+	margin: 0 auto;
 }
 
-
- .innericons li{
-    list-style-type: none;
-    
-  
-
+.innericons li {
+	list-style-type: none;
 }
-    /* .innericons{
+/* .innericons{
    position: absolute;
    top: 29em;
    left: 11em;
@@ -118,121 +109,116 @@ margin: 0 auto;
      top: 0em;
      left: 12em;
  } */
- a{
-     text-decoration: none;
- }
+a {
+	text-decoration: none;
+}
 
+.outerbox #hover1:hover ul {
+	color: linen;
+}
 
- 
- .outerbox #hover1:hover ul{
-     color: linen;
- }
-
-
- .publishh3{
+/* .publishh3{
             position: absolute;
             top: 36.9em;
             left: 5em;
-        }
+        }*/
+.publishh3 {
+	margin-right: auto;
+	margin-left: 60px;
+	padding-left: 10px;
+	margin-bottom: -71px;
+}
 
-  
-        .publish hr{
-        display: block;
-        margin-top: 4em;
-        margin-bottom: 0.5em;
-        margin-left: 11.5em;
-        margin-right: auto;
-        border: 0;
-         height: 1px;
-
+.publish hr {
+	display: block;
+	margin-top: 4em;
+	margin-bottom: 0.5em;
+	margin-left: 11.5em;
+	margin-right: auto;
+	border: 0;
+	height: 1px;
 	border-top: 1px solid #8c8b8b;
-
 	border-bottom: 1px solid #fff;
+}
 
-        }
-
-        .publishbox{
-  box-sizing: content-box;  
-  width: 260px;
-  height: 240px;
-  padding: 30px;  
-  border: 1px solid gainsboro;
-  margin-top: 2em;
-  margin-left: 12em;
-  margin-bottom: auto;
-  margin-right: auto;
-  width: 250px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  text-align: center;
-  
-
+.publishbox {
+	box-sizing: content-box;
+	width: 260px;
+	height: 240px;
+	padding: 30px;
+	border: 1px solid gainsboro;
+	margin-top: 2em;
+	margin-left: 12em;
+	margin-bottom: auto;
+	margin-right: -170px;
+	width: 250px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+		rgba(0, 0, 0, 0.19);
+	text-align: center;
 }
 
 /* Button */
-
 .button {
- 
-  display: inline-block;
-  border-radius: 35px;
-  border: none;
-  color: #FFFFFF;
-  background-color:#1c92d2;
-  text-align: center;
-  font-size: 24px;
-  padding: 15px;
-  width: 200px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
-
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
- 
+	display: inline-block;
+	border-radius: 35px;
+	border: none;
+	color: #FFFFFF;
+	background-color: #1c92d2;
+	text-align: center;
+	font-size: 24px;
+	padding: 15px;
+	width: 200px;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 5px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+		rgba(0, 0, 0, 0.19);
 }
 
 .button span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-  color: #FFFFFF;
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+	color: #FFFFFF;
 }
 
 .button span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.5s;
 }
 
 .button:hover span {
-  padding-right: 25px;
+	padding-right: 25px;
 }
 
 .button:hover span:after {
-  opacity: 1;
-  right: 0;
-}
-.button a{
-    text-decoration-style: none;
-    
-}
-#buttonid{
-    position: absolute;
-    top: 33em;
-    left: 62em;
-    color: blanchedalmond;
-    text-decoration-color: blanchedalmond;
+	opacity: 1;
+	right: 0;
 }
 
-
-.ul{
-    display: none;
+.button a {
+	text-decoration-style: none;
 }
+
+#buttonid {
+	position: absolute;
+	top: 33em;
+	left: 62em;
+	color: blanchedalmond;
+	text-decoration-color: blanchedalmond;
+}
+
+.ul {
+	display: none;
+}
+
 .box:hover .ul {
-    display: block;
-    
+	display: block;
 }
 
 /* #hover1:hover{
@@ -241,11 +227,9 @@ margin: 0 auto;
   height: 2%;
   mar
 } */
-
-ul:hover{
-    background-color: #add8e6;
-    display: block;
-    
+ul:hover {
+	background-color: #add8e6;
+	display: block;
 }
 /* ICONS */
 /* 
@@ -259,58 +243,70 @@ ul:hover{
    
     text-align: right;
 } */
-
-.innericons{
- display: flex;
-height: 70px;
-margin: 0 auto;
-width: 252px;
+.innericons {
+	display: flex;
+	height: 70px;
+	margin: 0 auto;
+	width: 252px;
 }
 
 ul {
-    text-align: center;
-/* display: inline-block; */
-/* margin-right: 17px;
+	text-align: center;
+	/* display: inline-block; */
+	/* margin-right: 17px;
 margin-top: 10px; */
-
-padding: 0px;
-flex: 1;
-height: 70px;
-width: 85px;
-margin: 0px
- 
+	padding: 0px;
+	flex: 13;
+	height: 70px;
+	width: 123px;
+	margin: 0px
 }
-
 
 
 
 li {
-    list-style: none;
-    color: white;
-    font-size: 25px;
-   
+	list-style: none;
+	color: white;
+	font-size: 25px;
 }
 
-
-
-.title{
-    width: 100%;
-    height: 10%;
-    border: 1px solid black;
+.title {
+	width: 100%;
+	height: 10%;
+	
 }
 
-.description{
-    height: 45%;
-    width: 100%;
-    border: 1px solid black;
-
-
+.description {
+	height: 45%;
+	width: 100%;
+	
 }
-     
-    .outerbox{
-    margin-inline-start: 82px;
-    display: flex;
-    flex-wrap : wrap;
-    padding : 10px;
-    
-    }
+
+.outerbox {
+	margin-inline-start: 82px;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 10px;
+}
+
+.publishul {
+	margin-left: 73px;
+	margin-top: auto;
+	margin-right: auto;
+	margin-bottom: auto;
+}
+
+.publishicon {
+	display: none;
+}
+
+.publishbox:hover .publishicon {
+	display: block;
+}
+
+.secondouterbox {
+	margin-inline-start: -103px;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 10px;
+}
