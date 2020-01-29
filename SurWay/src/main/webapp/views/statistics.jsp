@@ -24,9 +24,9 @@
             %>
 
 	<div id="maincard">
-		<h1 id="title">${surveyInfo.getTitle()}</h1>
+		<h1 id="title"><%=stats.getTitle() %></h1>
 		<p id="description">${surveyInfo.getDescription()}</p>
-		<a href="/survey">View Survey</a>
+		<a href="/survey/view?id=<%=stats.getId() %>">View Survey</a>
 		<p class="label">
 			1. Total no of responses : <b id="total">${surveyInfo.getMaleCount()+surveyInfo.getFemaleCount()+surveyInfo.getOtherCount()}</b>
 		</p>

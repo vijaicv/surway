@@ -1,4 +1,4 @@
-package com.bedrock2.surway.controllers;
+	package com.bedrock2.surway.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,7 +33,7 @@ public class StatController {
 	
 	@GetMapping(value = "/QStatistics")
 	public String returnQStatistics(@RequestParam(value = "s") int surveyId, Model m) {
-		Question[] questions = questionRepository.findBysurveyId(surveyId);
+		Question[] questions = questionRepository.findBySurveyId(surveyId);
 		Survey survey = surveyRepository.findById(surveyId).get();
 		m.addAttribute("survey", survey);
 		m.addAttribute("questions",questions);

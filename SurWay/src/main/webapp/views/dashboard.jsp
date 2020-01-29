@@ -25,15 +25,13 @@
 		<hr>
 	</div>
 	<%
-                  List<Survey> listofsurvey = (List<Survey>)request.getAttribute("listOfSurveys");
-                
-                  %>
+                  List<Survey> drafts = (List<Survey>)request.getAttribute("drafts");
+				  List<Survey> published = (List<Survey>)request.getAttribute("published");
+	%>
 	<div class="outerbox">
-		<%for (int k = 0; k < listofsurvey.size(); k++) {%>
-		<%  Survey survey = listofsurvey.get(k);
+		<%for (int k = 0; k < drafts.size(); k++) {%>
+		<%  Survey survey = drafts.get(k);
           System.out.println(survey.getTitle()); %>
-
-
 
 		<div class="box">
 			<div class="title"><%= survey.getTitle() %></div>
@@ -84,13 +82,10 @@
 		</div>
 		<hr></div>
 		<div class = "secondouterbox">
-		<%for (int k = 0; k < listofsurvey.size(); k++) {%>
-		<%  Survey survey = listofsurvey.get(k);
+		<%for (int k = 0; k < published.size(); k++) {%>
+		<%  Survey survey = published.get(k);
           System.out.println(survey.getTitle()); %>
 	
-	
-	
-
 	<div class="publishbox">
 		<div class="title"><%= survey.getTitle() %></div>
 		<br>

@@ -10,4 +10,5 @@ import com.bedrock2.surway.models.Survey;
 public interface SurveyRepository extends JpaRepository<Survey, Integer>{
 	
 	List<Survey> findByauthorId(int authorId);
+	List<Survey> findByAuthorIdAndPublished(int authorId, Boolean published);
  }

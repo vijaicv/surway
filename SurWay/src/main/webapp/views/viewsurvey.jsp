@@ -19,6 +19,8 @@
 		<br /> <br />
 		<%
 			Question[] questions = (Question[]) request.getAttribute("questions");
+			Survey survey = (Survey) request.getAttribute("surveyInfo");
+			Boolean published = survey.isPublished();
 		%>
 
 
@@ -31,16 +33,14 @@
 		%>
 
 
-
 		<p>
-		<form action="/survey/edit" method="post">
+		<form action="/survey/edit" method="post" >
 			<b><%=j + 1%></b>. <b><%=question.getQuestionString()%></b>
 			<input type="hidden" value=<%=question.getId() %> name="questionId"/>
 			<input type="hidden" value="${surveyInfo.getId()}" name="surveyId"/>
-			<button class="editButton" type="submit">edit</button>
+			<button class="editButton" type="submit" style=<%=published?"display:none":"" %>>edit</button>
 		</form>
 		</p>
-
 		<ul>
 
 
@@ -74,7 +74,7 @@
 		%>
 		<form action="/survey/publish" method="post">
 			<input type="hidden" value="${surveyInfo.getId()}" name="surveyId">
-			<button class="publishButton" type="submit">publish</button>
+			<button class="publishButton" type="submit" style=<%=published?"display:none":"" %>>publish</button>
 		</form>
 	</div>
 </body>

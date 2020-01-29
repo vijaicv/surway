@@ -21,9 +21,13 @@ public class DashController {
 	
 	@GetMapping("/{id}")
 	public String getDashboard(@PathVariable("id") int authorId, Model m) {
-		List<Survey> listOfSurveys = surveyRepository.findByauthorId(authorId);
-		m.addAttribute("listOfSurveys",listOfSurveys);
-		System.out.println(listOfSurveys);
+		
+		List<Survey> drafts = surveyRepository.findByAuthorIdAndPublished(authorId,false);
+		m.addAttribute("drafts",drafts);
+		
+		List<Survey> published = surveyRepository.findByAuthorIdAndPublished(authorId, true);
+		m.addAttribute("published",published);
+		
 		return "/views/dashboard.jsp";
 	}
 	

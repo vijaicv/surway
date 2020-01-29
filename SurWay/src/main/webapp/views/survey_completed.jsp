@@ -67,7 +67,7 @@
 </head>
 <body style="background-color: #03A9F4; font-family: Open Sans">
 
-	<form action="/Dashboard/101">
+	<form action="/Dashboard/20">
 
 		<div class="box">
 			<h1 class="head">
