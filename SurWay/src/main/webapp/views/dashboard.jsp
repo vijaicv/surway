@@ -11,6 +11,8 @@
 <title>Dashboard Page</title>
 
 <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
+
+ <script type="text/javascript" src="/js/delete.js"></script>
 </head>
 <body>
 	<div class="div1">
@@ -54,8 +56,11 @@
 						<ul>
 							<li><img src="/images/delete-icon.png" style="width: 30px;">
 							</li>
-							<li style="font-size: 18px;"><a href="">Delete</a></li>
-
+							
+    <form action="/survey/delete" onclick="return myfunc()" method= "post">
+    <input type ="hidden" value ="<%= survey.getId()%>" name ="surveyId">
+							<li style="font-size: 18px;"><button type="submit" >Delete</button></li>
+</form>
 						</ul>
 					</div>
 
