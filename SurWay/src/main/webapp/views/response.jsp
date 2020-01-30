@@ -40,6 +40,7 @@ int qnum=question.getQuestionNumber();
 	 float oneqsln=barwidth/totalqs;
 	 float setbarwidth=currentqs*oneqsln;
 	 
+	 
 	 for(int i=1;i<=totalqs;i++)	
 	{
 	%>
@@ -54,7 +55,7 @@ int qnum=question.getQuestionNumber();
 	<br>
 	<div class="maincontainer">
 		Mandatory <br> 
-		<strong><%=currentqs%>/<%=totalqs%> Answered</strong> <br>
+		<strong><%=(int)currentqs%>/<%=(int)totalqs%> Answered</strong> <br>
 		<div class="bar1">
 			<div style="width: <%=setbarwidth%>vw;height: 20px;border-radius: 10px;background-color: green;"></div>
 		</div>
@@ -146,7 +147,11 @@ int qnum=question.getQuestionNumber();
 	<!-- 
 	-----------------User id is temporary given----------------	
 	 -->
+<<<<<<< Updated upstream
 	<input type="hidden" name="userId" value="20">
+=======
+	<input type="hidden" name="userId" value="1">
+>>>>>>> Stashed changes
 	</form>
 	<br>
 	<br>

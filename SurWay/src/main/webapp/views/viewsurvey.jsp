@@ -19,6 +19,7 @@
 		<br /> <br />
 		<%
 			Question[] questions = (Question[]) request.getAttribute("questions");
+
 			Survey survey = (Survey) request.getAttribute("surveyInfo");
 			Boolean published = survey.isPublished();
 		%>
@@ -27,8 +28,12 @@
 		<%
 			double totalresponses = 0;
 			for (int j = 0; j < questions.length; j++) {
+				System.out.println("dview survey check");
+
 				Question question = questions[j];
 				String[] options = question.getOptions();
+				System.out.println("dview survey check22");
+
 				int type = question.getType();
 		%>
 

@@ -76,8 +76,9 @@ public class SurveyController {
 		m.addAttribute("surveyInfo",survey);
 
 		Question[] questions = questionRepository.findBySurveyId(surveyId);
+		System.out.println("Here in check");
 		m.addAttribute("questions",questions);
-
+		
 		return "/views/viewsurvey.jsp";
 	}
 

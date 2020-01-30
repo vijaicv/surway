@@ -39,7 +39,7 @@
             	</select><br><br>
             	<input type="hidden" name="surveyId" value=<%= survey.getId() %>>
             	<input type = "checkbox" name="mandatory" value="true"><b>Mandatory</b><br><br><br><br>
-            	<a id= "finishButton" href="/Dashboard/101">Finish</a><br>
+            	<a id= "finishButton" href="/Dashboard/1">Finish</a><br>
             	<label>Q${qNum}</label>
             	<%
             		int num = (int)(request.getAttribute("qNum"));
